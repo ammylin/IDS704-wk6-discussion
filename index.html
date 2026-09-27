@@ -43,6 +43,12 @@
       flex-direction: column;
     }
 
+    /* Accessibility Focus States */
+    :focus-visible {
+      outline: 3px solid var(--accent-indigo);
+      outline-offset: 2px;
+    }
+
     header {
       background: rgba(251, 249, 245, 0.95);
       backdrop-filter: blur(12px);
@@ -160,7 +166,9 @@
       border-radius: 8px;
       padding: 0.75rem 1.5rem;
       margin-bottom: 2rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .progress-step {
@@ -206,11 +214,11 @@
     /* Screen Views */
     .screen {
       display: none;
-      animation: fadeIn 0.3s ease-in-out;
     }
 
     .screen.active {
       display: block;
+      animation: fadeIn 0.3s ease-in-out;
     }
 
     @keyframes fadeIn {
@@ -218,18 +226,17 @@
         opacity: 0;
         transform: translateY(10px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    /* Welcome Screen */
+    /* Welcome Screen & Mode Selector */
     .hero {
       text-align: center;
-      max-width: 800px;
-      margin: 2.5rem auto;
+      max-width: 850px;
+      margin: 2rem auto;
     }
 
     .hero-tag {
@@ -241,7 +248,7 @@
       border-radius: 50px;
       font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       letter-spacing: 0.5px;
     }
 
@@ -250,49 +257,106 @@
       font-size: 2.8rem;
       font-weight: 700;
       line-height: 1.2;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       color: #1c1917;
     }
 
     .hero p {
       font-size: 1.15rem;
       color: var(--text-muted);
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
 
-    .info-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .info-card {
-      background: var(--bg-card);
+    .mode-select-box {
+      background: #ffffff;
       border: 1px solid var(--border-color);
-      border-radius: 8px;
+      border-radius: 12px;
       padding: 1.75rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
       text-align: left;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
 
-    .info-card-icon {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
+    .mode-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
     }
 
-    .info-card h3 {
+    .mode-card {
+      background: #fbf9f5;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .mode-card.selected {
+      border-color: var(--accent-indigo);
+      background: #ffffff;
+      box-shadow: 0 0 15px rgba(67, 56, 202, 0.15);
+    }
+
+    .mode-card h4 {
       font-family: 'Lora', serif;
       font-size: 1.15rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
       color: var(--text-main);
     }
 
-    .info-card p {
-      font-size: 0.95rem;
+    .mode-time {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-indigo);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Stakeholder Role Selector */
+    .role-select-box {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      text-align: left;
+    }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .role-card {
+      background: #fbf9f5;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .role-card.selected {
+      border-color: var(--accent-indigo);
+      border-width: 2px;
+      background: #ffffff;
+    }
+
+    .role-card h5 {
+      font-size: 1rem;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    .role-desc {
+      font-size: 0.85rem;
       color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 0;
+      line-height: 1.4;
     }
 
     /* Game Layout */
@@ -346,27 +410,6 @@
       color: var(--text-muted);
     }
 
-    /* Use Cases Board Summary */
-    .use-cases-preview {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .use-case-mini {
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 1rem;
-    }
-
-    .use-case-mini h5 {
-      font-family: 'Lora', serif;
-      font-size: 0.95rem;
-      margin-bottom: 0.25rem;
-    }
-
     /* Cards Deck & Hand */
     .cards-section {
       margin-bottom: 2rem;
@@ -400,7 +443,9 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      text-align: left;
+      width: 100%;
     }
 
     .decision-card:hover:not(.disabled):not(.played) {
@@ -460,6 +505,39 @@
       color: var(--text-muted);
     }
 
+    /* Tooltip Callout for Metrics */
+    .metric-tooltip-trigger {
+      border-bottom: 1px dashed var(--accent-indigo);
+      color: var(--accent-indigo);
+      cursor: help;
+      position: relative;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    .metric-tooltip-box {
+      display: none;
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1c1917;
+      color: #ffffff;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      width: 280px;
+      z-index: 200;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      line-height: 1.4;
+      text-align: left;
+    }
+
+    .metric-tooltip-trigger:hover .metric-tooltip-box,
+    .metric-tooltip-trigger:focus .metric-tooltip-box {
+      display: block;
+    }
+
     /* History Sidebar */
     .sidebar-panel {
       background: var(--bg-card);
@@ -467,7 +545,7 @@
       border-radius: 10px;
       padding: 1.5rem;
       height: fit-content;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
     }
 
     .history-list {
@@ -512,35 +590,26 @@
       background: rgba(28, 25, 23, 0.65);
       backdrop-filter: blur(6px);
       z-index: 1000;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       padding: 2rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s ease;
     }
 
     .modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
+      display: flex;
+      animation: fadeIn 0.25s ease-in-out;
     }
 
     .evidence-modal-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      max-width: 750px;
+      max-width: 780px;
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-      transform: scale(0.95);
-      transition: transform 0.3s ease;
-    }
-
-    .modal-overlay.active .evidence-modal-card {
-      transform: scale(1);
     }
 
     .evidence-header {
@@ -591,8 +660,7 @@
       font-size: 0.95rem;
     }
 
-    .evidence-table th,
-    .evidence-table td {
+    .evidence-table th, .evidence-table td {
       border: 1px solid var(--border-color);
       padding: 0.6rem 1rem;
       text-align: left;
@@ -604,27 +672,17 @@
       font-weight: 600;
     }
 
-    .stakeholder-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-      margin: 1rem 0;
+    .missing-evidence-box {
+      background: rgba(180, 83, 9, 0.08);
+      border: 1px solid rgba(180, 83, 9, 0.25);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      font-size: 0.9rem;
     }
 
-    .stakeholder-card {
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-left: 4px solid var(--accent-indigo);
-      border-radius: 6px;
-      padding: 1rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-    }
-
-    .stakeholder-role {
-      font-weight: 700;
-      font-size: 0.85rem;
-      color: var(--accent-indigo);
-      margin-bottom: 0.3rem;
+    .missing-evidence-box strong {
+      color: var(--accent-amber);
     }
 
     .prompt-callout {
@@ -667,14 +725,14 @@
       background: #f4efe6;
     }
 
-    /* Final Decision Form & Safeguards */
+    /* Final Decision Form & Validation Feedback */
     .final-use-case-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 10px;
       padding: 1.75rem;
       margin-bottom: 1.75rem;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
     }
 
     .safeguards-grid {
@@ -720,8 +778,20 @@
     }
 
     textarea.final-input {
-      min-height: 80px;
+      min-height: 85px;
       resize: vertical;
+    }
+
+    .validation-error-box {
+      background: rgba(190, 18, 60, 0.08);
+      border: 1px solid var(--accent-rose);
+      color: var(--accent-rose);
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      display: none;
+      font-weight: 600;
+      font-size: 0.95rem;
     }
 
     /* Rationale & Trail Screen */
@@ -749,12 +819,28 @@
       margin-bottom: 0.5rem;
     }
 
-    .reflection-box {
-      background: #fbf9f5;
+    .uninvestigated-box {
+      background: #fef3c7;
+      border: 1px solid #f59e0b;
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Classroom Comparison Screen */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .comparison-card {
+      background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: 10px;
-      padding: 1.75rem;
-      margin: 2rem 0;
+      padding: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
     }
 
     /* Risk Badges */
@@ -766,23 +852,9 @@
       border-radius: 4px;
     }
 
-    .risk-low {
-      background: rgba(4, 120, 87, 0.08);
-      color: var(--accent-emerald);
-      border: 1px solid rgba(4, 120, 87, 0.25);
-    }
-
-    .risk-medium {
-      background: rgba(180, 83, 9, 0.08);
-      color: var(--accent-amber);
-      border: 1px solid rgba(180, 83, 9, 0.25);
-    }
-
-    .risk-high {
-      background: rgba(190, 18, 60, 0.08);
-      color: var(--accent-rose);
-      border: 1px solid rgba(190, 18, 60, 0.25);
-    }
+    .risk-low { background: rgba(4, 120, 87, 0.08); color: var(--accent-emerald); border: 1px solid rgba(4, 120, 87, 0.25); }
+    .risk-medium { background: rgba(180, 83, 9, 0.08); color: var(--accent-amber); border: 1px solid rgba(180, 83, 9, 0.25); }
+    .risk-high { background: rgba(190, 18, 60, 0.08); color: var(--accent-rose); border: 1px solid rgba(190, 18, 60, 0.25); }
 
     .opt-btn {
       padding: 0.5rem 0.9rem;
@@ -797,23 +869,9 @@
       transition: all 0.2s ease;
     }
 
-    .opt-btn.active-launch {
-      background: var(--accent-emerald);
-      color: white;
-      border-color: var(--accent-emerald);
-    }
-
-    .opt-btn.active-limited {
-      background: var(--accent-amber);
-      color: white;
-      border-color: var(--accent-amber);
-    }
-
-    .opt-btn.active-pause {
-      background: var(--accent-rose);
-      color: white;
-      border-color: var(--accent-rose);
-    }
+    .opt-btn.active-launch { background: var(--accent-emerald); color: white; border-color: var(--accent-emerald); }
+    .opt-btn.active-limited { background: var(--accent-amber); color: white; border-color: var(--accent-amber); }
+    .opt-btn.active-pause { background: var(--accent-rose); color: white; border-color: var(--accent-rose); }
 
     /* Debrief Cards */
     .debrief-grid {
@@ -828,7 +886,7 @@
       border: 1px solid var(--border-color);
       border-radius: 10px;
       padding: 1.75rem;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
     }
 
     .fairness-badge {
@@ -839,48 +897,14 @@
       text-transform: uppercase;
     }
 
-    .distributive {
-      background: rgba(29, 78, 216, 0.08);
-      color: var(--accent-blue);
-      border: 1px solid rgba(29, 78, 216, 0.25);
-    }
-
-    .procedural {
-      background: rgba(126, 34, 206, 0.08);
-      color: var(--accent-purple);
-      border: 1px solid rgba(126, 34, 206, 0.25);
-    }
-
-    .informational {
-      background: rgba(4, 120, 87, 0.08);
-      color: var(--accent-emerald);
-      border: 1px solid rgba(4, 120, 87, 0.25);
-    }
-
-    .interpersonal {
-      background: rgba(180, 83, 9, 0.08);
-      color: var(--accent-amber);
-      border: 1px solid rgba(180, 83, 9, 0.25);
-    }
+    .distributive { background: rgba(29, 78, 216, 0.08); color: var(--accent-blue); border: 1px solid rgba(29, 78, 216, 0.25); }
+    .procedural { background: rgba(126, 34, 206, 0.08); color: var(--accent-purple); border: 1px solid rgba(126, 34, 206, 0.25); }
+    .informational { background: rgba(4, 120, 87, 0.08); color: var(--accent-emerald); border: 1px solid rgba(4, 120, 87, 0.25); }
 
     @media print {
-
-      header,
-      .btn,
-      .no-print,
-      .progress-nav {
-        display: none !important;
-      }
-
-      body {
-        background: white;
-        color: black;
-      }
-
-      .container {
-        max-width: 100%;
-        padding: 0;
-      }
+      header, .btn, .no-print, .progress-nav, .mode-select-box, .role-select-box { display: none !important; }
+      body { background: white; color: black; }
+      .container { max-width: 100%; padding: 0; }
     }
   </style>
 </head>
@@ -893,86 +917,69 @@
       <span class="logo-title">Campus FacePass: Decision Cards</span>
     </div>
     <div class="header-actions">
-      <button class="btn btn-secondary" onclick="restartGame()">↻ Reset Activity</button>
-      <button class="btn btn-outline" onclick="toggleFacilitatorGuide()">📘 Facilitator Guide</button>
+      <button class="btn btn-secondary" onclick="restartGame()" aria-label="Reset Activity">↻ Reset Activity</button>
+      <button class="btn btn-outline" onclick="toggleFacilitatorGuide()" aria-label="Open Facilitator Guide">📘 Facilitator Guide</button>
     </div>
   </header>
 
-  <div class="container">
+  <main class="container">
 
     <!-- Progress Nav Bar -->
-    <div class="progress-nav" id="progress-nav-bar">
-      <div class="progress-step active" id="p-step-1"><span class="step-num">1</span> Round 1</div>
-      <div class="progress-step" id="p-step-2"><span class="step-num">2</span> Round 2</div>
-      <div class="progress-step" id="p-step-3"><span class="step-num">3</span> Round 3</div>
-      <div class="progress-step" id="p-step-4"><span class="step-num">4</span> Round 4</div>
-      <div class="progress-step" id="p-step-5"><span class="step-num">5</span> Final Decision</div>
-      <div class="progress-step" id="p-step-6"><span class="step-num">6</span> Rationale & Trail</div>
-      <div class="progress-step" id="p-step-7"><span class="step-num">7</span> Debrief</div>
-    </div>
+    <nav class="progress-nav" id="progress-nav-bar" aria-label="Activity Progress">
+      <div class="progress-step active" id="p-step-1"><span class="step-num">1</span> Setup & Role</div>
+      <div class="progress-step" id="p-step-2"><span class="step-num">2</span> Investigation</div>
+      <div class="progress-step" id="p-step-3"><span class="step-num">3</span> Final Decisions</div>
+      <div class="progress-step" id="p-step-4"><span class="step-num">4</span> Evidence Trail</div>
+      <div class="progress-step" id="p-step-5"><span class="step-num">5</span> Class Comparison</div>
+      <div class="progress-step" id="p-step-6"><span class="step-num">6</span> Debrief</div>
+    </nav>
 
-    <!-- SCREEN 1: WELCOME / SCENARIO -->
-    <div id="screen-welcome" class="screen active">
+    <!-- SCREEN 1: WELCOME & GAME SETUP -->
+    <section id="screen-welcome" class="screen active" aria-labelledby="welcome-title">
       <div class="hero">
         <span class="hero-tag">ALGORITHMIC FAIRNESS DECISION GAME</span>
-        <h1>Campus FacePass Decision Activity</h1>
-        <p>A 10–15 minute interactive decision game exploring trade-offs in model accuracy, intersectional auditing,
-          transparency, stakeholder input, and risk-based deployment.</p>
-        <button class="btn btn-primary" style="font-size: 1.1rem; padding: 0.8rem 2.2rem;" onclick="startGame()">Start
-          Interactive Game →</button>
+        <h1 id="welcome-title">Campus FacePass Decision Activity</h1>
+        <p>A board-game style decision exercise exploring trade-offs between model accuracy, intersectional auditing, transparency, stakeholder input, and risk-based deployment.</p>
       </div>
 
-      <div class="info-cards-grid">
-        <div class="info-card">
-          <div class="info-card-icon">🏢</div>
-          <h3>The Fictional Scenario</h3>
-          <p>The university is preparing to launch <strong>Campus FacePass</strong>—a facial recognition system allowing
-            cardless access for students, staff, and faculty. Vendor claims <strong>98% overall accuracy</strong>.</p>
-        </div>
-
-        <div class="info-card">
-          <div class="info-card-icon">🔍</div>
-          <h3>Unlock Evidence</h3>
-          <p>Cards don't reveal answers—they reveal <strong>concrete investigation data, audits, and stakeholder
-              voices</strong> that your team must analyze together.</p>
-        </div>
-
-        <div class="info-card">
-          <div class="info-card-icon">🚨</div>
-          <h3>Dynamic Breaking Events</h3>
-          <p>Navigate unexpected breaking events, security requests, and vendor updates that test your governance and
-            safeguards across 4 decision rounds.</p>
+      <!-- Mode Selector -->
+      <div class="mode-select-box">
+        <h3 style="font-family:'Lora',serif; margin-bottom:0.3rem;">1. Select Session Mode</h3>
+        <p style="font-size:0.9rem; color:var(--text-muted);">Choose the activity format suited to your class schedule.</p>
+        <div class="mode-grid">
+          <div class="mode-card selected" id="mode-full" onclick="selectMode('full')" tabindex="0" role="radio" aria-checked="true">
+            <span class="mode-time">⏱️ 25–35 MINS</span>
+            <h4>Full Discussion Mode</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted);">4 investigation rounds, multiple breaking events, complete evidence trail analysis, and full debrief.</p>
+          </div>
+          <div class="mode-card" id="mode-quick" onclick="selectMode('quick')" tabindex="0" role="radio" aria-checked="false">
+            <span class="mode-time">⏱️ 10–15 MINS</span>
+            <h4>Quick Mode</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted);">2 investigation rounds, 1 breaking event, final deployment decisions, and streamlined debrief.</p>
+          </div>
         </div>
       </div>
-    </div>
+
+      <!-- Stakeholder Role Assignment -->
+      <div class="role-select-box">
+        <h3 style="font-family:'Lora',serif; margin-bottom:0.3rem;">2. Assign Participant / Team Perspective (Optional)</h3>
+        <p style="font-size:0.9rem; color:var(--text-muted);">Assigning specific stakeholder lenses encourages multi-faceted discussion without dictating a single correct outcome.</p>
+        <div class="role-grid" id="roles-container">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:center; margin-bottom:3rem;">
+        <button class="btn btn-primary" style="font-size: 1.1rem; padding: 0.8rem 2.5rem;" onclick="startGame()">Start Decision Activity →</button>
+      </div>
+    </section>
 
     <!-- SCREEN 2: GAME BOARD -->
-    <div id="screen-game" class="screen">
-      <!-- Round Header Banner -->
+    <section id="screen-game" class="screen" aria-labelledby="round-title-text">
       <div class="round-header">
-        <span class="round-badge" id="round-number-badge">Round 1 of 4</span>
+        <span class="round-badge" id="round-number-badge">Round 1</span>
         <h2 class="round-title" id="round-title-text">Round 1 — Pre-launch Testing</h2>
-        <p class="round-prompt" id="round-prompt-text">The vendor says Campus FacePass is ready. What do you check
-          first?</p>
-      </div>
-
-      <!-- Use Cases Mini Board -->
-      <div class="use-cases-preview">
-        <div class="use-case-mini">
-          <h5>Library & Gym Access</h5>
-          <span class="risk-badge risk-low">Low Risk</span>
-          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">Convenience access</p>
-        </div>
-        <div class="use-case-mini">
-          <h5>Dorm & Lab Access</h5>
-          <span class="risk-badge risk-medium">Medium/High Risk</span>
-          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">Access control</p>
-        </div>
-        <div class="use-case-mini">
-          <h5>Campus Police ID Support</h5>
-          <span class="risk-badge risk-high">High Risk</span>
-          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.2rem;">Law enforcement ID</p>
-        </div>
+        <p class="round-prompt" id="round-prompt-text">The vendor says Campus FacePass is ready. What investigation card will your team play first?</p>
       </div>
 
       <div class="game-grid">
@@ -981,8 +988,7 @@
           <div class="cards-section">
             <div class="section-title">
               <span>🃏 Your Decision Cards Hand</span>
-              <span style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);">(Select ONE card to play
-                for this round)</span>
+              <span style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);">(Select ONE card to play for this round)</span>
             </div>
             <div class="cards-grid" id="cards-container">
               <!-- Rendered dynamically -->
@@ -990,8 +996,7 @@
           </div>
 
           <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
-            <button class="btn btn-primary" id="play-card-btn" disabled onclick="confirmPlayCard()">Investigate Selected
-              Card →</button>
+            <button class="btn btn-primary" id="play-card-btn" disabled onclick="confirmPlayCard()">Investigate Selected Card →</button>
           </div>
         </div>
 
@@ -999,28 +1004,28 @@
         <div class="sidebar-column">
           <div class="sidebar-panel">
             <h3 class="section-title">📜 Cards Played Log</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">Cards played in past rounds are spent.</p>
+            <div id="role-badge-sidebar" style="margin-bottom:0.75rem; font-size:0.85rem; background:rgba(67,56,202,0.08); color:var(--accent-indigo); padding:0.4rem 0.6rem; border-radius:4px; font-weight:600;"></div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Investigated cards are permanently spent.</p>
             <div class="history-list" id="history-container">
               <div style="font-size: 0.85rem; color: var(--text-muted); font-style: italic;">No cards played yet.</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- SCREEN 3: FINAL DECISION SHEET -->
-    <div id="screen-final" class="screen">
+    <section id="screen-final" class="screen" aria-labelledby="final-title">
       <div style="text-align: center; margin-bottom: 2rem;">
         <span class="hero-tag">FINAL DEPLOYMENT & SAFEGUARDS</span>
-        <h2 style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Campus FacePass Final Decision
-          Sheet</h2>
-        <p style="color: var(--text-muted);">For each use case, set the deployment level, select required safeguards,
-          and specify what evidence would change your mind.</p>
+        <h2 id="final-title" style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Campus FacePass Final Decision Sheet</h2>
+        <p style="color: var(--text-muted);">For each use case, set the deployment level, select required safeguards, cite unlocked evidence, specify what would change your mind, identify remaining uncertainty, and define monitoring.</p>
       </div>
 
+      <div class="validation-error-box" id="validation-error-banner"></div>
+
       <div class="summary-box" style="margin-bottom: 2rem;">
-        <h4 style="font-family: 'Lora', serif; color: var(--accent-indigo); margin-bottom: 0.5rem;">🃏 Evidence
-          Discovered During the Game:</h4>
+        <h4 style="font-family: 'Lora', serif; color: var(--accent-indigo); margin-bottom: 0.5rem;">🃏 Uncovered Evidence Summary:</h4>
         <div id="final-played-cards-summary" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
       </div>
 
@@ -1029,45 +1034,45 @@
       </div>
 
       <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;">
-        <button class="btn btn-primary" onclick="submitFinalDecisions()">Review Team Rationale & Evidence Trail
-          →</button>
+        <button class="btn btn-primary" onclick="submitFinalDecisions()">Review Evidence Trail & Rationale →</button>
       </div>
-    </div>
+    </section>
 
     <!-- SCREEN 4: RATIONALE & EVIDENCE TRAIL -->
-    <div id="screen-rationale" class="screen">
+    <section id="screen-rationale" class="screen" aria-labelledby="rationale-title">
       <div style="text-align: center; margin-bottom: 2rem;">
-        <span class="hero-tag">TEAM RATIONALE & TRAIL</span>
-        <h2 style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Decision Rationale & Evidence Trail
-        </h2>
-        <p style="color: var(--text-muted);">Review how your team's understanding developed over the course of the
-          investigation.</p>
+        <span class="hero-tag">TEAM EVIDENCE TRAIL & REFLECTION</span>
+        <h2 id="rationale-title" style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Decision Rationale & Evidence Trail</h2>
+        <p style="color: var(--text-muted);">Review how your team's understanding developed over the course of the investigation.</p>
       </div>
 
       <div style="margin-bottom: 2rem;">
-        <h3 class="section-title">📋 Summary of Deployment Decisions & Safeguards</h3>
+        <h3 class="section-title">📋 Summary of Final Deployment Decisions & Safeguards</h3>
         <div id="rationale-summary-list"></div>
       </div>
 
       <div style="margin-bottom: 2rem;">
-        <h3 class="section-title">🔎 Your Team's Evidence Trail</h3>
+        <h3 class="section-title">🔎 Evidence Uncovered by Your Team</h3>
         <div id="evidence-trail-list"></div>
       </div>
 
+      <div class="uninvestigated-box">
+        <h4 style="font-family:'Lora',serif; color:#b45309; margin-bottom:0.4rem;">⚠️ Important Evidence Your Team Did NOT Investigate</h4>
+        <p style="font-size:0.9rem; color:#78350f; margin-bottom:0.5rem;">Because each card can only be played once, your team was forced to make trade-offs. You missed investigating:</p>
+        <ul id="uninvestigated-cards-list" style="padding-left:1.2rem; font-size:0.9rem; color:#78350f;"></ul>
+      </div>
+
       <!-- What Changed Reflection -->
-      <div class="reflection-box">
-        <h3 style="font-family: 'Lora', serif; color: var(--accent-indigo); margin-bottom: 0.75rem;">🔄 "What Changed?"
-          Team Reflection</h3>
+      <div class="reflection-box" style="background:#ffffff; border:1px solid var(--border-color); border-radius:10px; padding:1.75rem; margin:2rem 0;">
+        <h3 style="font-family: 'Lora', serif; color: var(--accent-indigo); margin-bottom: 0.75rem;">🔄 "What Changed?" Team Reflection</h3>
         <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
-          At the beginning of the game, you only knew that vendor claimed <strong>98% overall accuracy</strong>. Since
-          then, you uncovered intersectional gaps, missing populations, stakeholder concerns, and risk differences.
+          At the beginning of the game, you only knew that vendor claimed <strong>98% overall accuracy</strong>. Compare that initial impression with the disaggregated false match rates, missing populations, stakeholder concerns, and risk differences unlocked during the game.
         </p>
 
-        <label style="display:block; font-weight:700; margin-bottom:0.5rem;">Did your team's decision change as you
-          learned more?</label>
+        <label style="display:block; font-weight:700; margin-bottom:0.5rem;">Did your team's decision change as you learned more?</label>
         <div style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.25rem;">
           <label class="event-opt-label">
-            <input type="radio" name="reflection-opt" value="Yes — our decision changed." checked>
+            <input type="radio" name="reflection-opt" value="Yes — our deployment decision changed." checked>
             <span>Yes — our deployment decision changed.</span>
           </label>
           <label class="event-opt-label">
@@ -1080,27 +1085,62 @@
           </label>
         </div>
 
-        <label style="display:block; font-weight:700; margin-bottom:0.5rem;">Why did your reasoning change (or stay the
-          same)?</label>
-        <textarea class="final-input" id="reflection-why-input"
-          placeholder="Explain how the new evidence or events influenced your team's final stance..."></textarea>
+        <label for="reflection-why-input" style="display:block; font-weight:700; margin-bottom:0.5rem;">Why did your reasoning change (or stay the same)?</label>
+        <textarea class="final-input" id="reflection-why-input" placeholder="Explain how the uncovered evidence or events influenced your team's final stance..."></textarea>
       </div>
 
       <div style="display: flex; gap: 1rem; justify-content: flex-end;">
         <button class="btn btn-secondary no-print" onclick="window.print()">🖨️ Print / Save Decision Summary</button>
-        <button class="btn btn-primary" onclick="showDebriefScreen()">Continue to Fairness Debrief →</button>
+        <button class="btn btn-primary" onclick="showClassroomComparisonScreen()">Continue to Classroom Comparison →</button>
       </div>
-    </div>
+    </section>
 
-    <!-- SCREEN 5: DEBRIEF & CONCEPT MAPPING -->
-    <div id="screen-debrief" class="screen">
+    <!-- SCREEN 5: CLASSROOM COMPARISON -->
+    <section id="screen-comparison" class="screen" aria-labelledby="comparison-title">
       <div style="text-align: center; margin-bottom: 2rem;">
-        <span class="hero-tag">CLASSROOM DEBRIEF</span>
-        <h2 style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Fairness Concepts & Case Study
-          Connection</h2>
-        <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto;">See how your decision cards, unlocked
-          evidence, and event responses map to organizational justice and algorithmic fairness concepts (Gender Shades
-          study).</p>
+        <span class="hero-tag">CLASSROOM DISCUSSION & SYNTHESIS</span>
+        <h2 id="comparison-title" style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Classroom Team Comparison</h2>
+        <p style="color: var(--text-muted); max-width: 750px; margin: 0 auto;">Compare your team's choices with other small groups. How did different evidence paths, stakeholder roles, and risk tolerances produce different defensible decisions?</p>
+      </div>
+
+      <div class="comparison-grid">
+        <div class="comparison-card">
+          <h4 style="font-family:'Lora',serif; color:var(--accent-indigo); margin-bottom:0.5rem;">📚 Library & Gym Access</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.75rem;">Lower-Risk Convenience Deployment</p>
+          <div style="background:#fbf9f5; padding:0.85rem; border-radius:6px; font-size:0.9rem;" id="comp-uc1-summary"></div>
+        </div>
+        <div class="comparison-card">
+          <h4 style="font-family:'Lora',serif; color:var(--accent-amber); margin-bottom:0.5rem;">🔬 Dorm & Lab Access</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.75rem;">Medium/High-Risk Access Control</p>
+          <div style="background:#fbf9f5; padding:0.85rem; border-radius:6px; font-size:0.9rem;" id="comp-uc2-summary"></div>
+        </div>
+        <div class="comparison-card">
+          <h4 style="font-family:'Lora',serif; color:var(--accent-rose); margin-bottom:0.5rem;">🛡️ Campus Police ID Support</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.75rem;">High-Risk Enforcement Deployment</p>
+          <div style="background:#fbf9f5; padding:0.85rem; border-radius:6px; font-size:0.9rem;" id="comp-uc3-summary"></div>
+        </div>
+      </div>
+
+      <div style="background:#ffffff; border:1px solid var(--border-color); border-left:5px solid var(--accent-indigo); border-radius:10px; padding:1.75rem; margin-bottom:2rem;">
+        <h4 style="font-family:'Lora',serif; color:var(--accent-indigo); margin-bottom:0.5rem;">💬 Facilitator Discussion Prompts:</h4>
+        <ul style="padding-left:1.2rem; font-size:0.95rem; color:var(--text-muted); line-height:1.7;">
+          <li><strong>Cross-Group Divergence:</strong> Did teams who investigated <em>Intersectional Audit</em> or <em>Stakeholder Feedback</em> early reach different conclusions than those who relied on <em>Overall Accuracy</em>?</li>
+          <li><strong>Role Perspective Impact:</strong> How did assigned lenses (e.g. <em>Disability-Access Advocate</em> vs <em>Campus Security Representative</em>) prioritize different harms or safeguards?</li>
+          <li><strong>Safeguard Trade-offs:</strong> Are procedural safeguards (appeals, human review) sufficient to justify high-risk police deployment, or remain some uses inherently unsuited for biometric automation?</li>
+        </ul>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end;">
+        <button class="btn btn-primary" onclick="showDebriefScreen()">Proceed to Fairness Debrief & Gender Shades Study →</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 6: DEBRIEF & GENDER SHADES CONNECTION -->
+    <section id="screen-debrief" class="screen" aria-labelledby="debrief-title">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <span class="hero-tag">THEORETICAL DEBRIEF</span>
+        <h2 id="debrief-title" style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Fairness Concepts & Research Connection</h2>
+        <p style="color: var(--text-muted); max-width: 750px; margin: 0 auto;">See how your decision cards, unlocked evidence, and event responses map to organizational justice frameworks and real-world algorithmic fairness research.</p>
       </div>
 
       <div class="debrief-grid">
@@ -1109,10 +1149,8 @@
             <span class="fairness-badge distributive">Distributive Fairness</span>
           </div>
           <h3 style="font-family: 'Lora', serif; margin-bottom: 0.5rem;">Error Distribution & Intersectionality</h3>
-          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on whether outcomes,
-            accuracy, and error rates are evenly distributed across demographic subgroups.</p>
-          <div
-            style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on whether outcomes, accuracy, false-match rates, and false-non-match rates are evenly distributed across demographic subgroups.</p>
+          <div style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
             <strong>Cards mapped:</strong><br>
             • Intersectional Audit (Card 2)<br>
             • Expand Categories (Card 3)<br>
@@ -1125,10 +1163,8 @@
             <span class="fairness-badge procedural">Procedural Fairness</span>
           </div>
           <h3 style="font-family: 'Lora', serif; margin-bottom: 0.5rem;">Transparency, Governance & Appeals</h3>
-          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on whether decisions are
-            made through consistent, transparent, human-reviewable, and challengeable processes.</p>
-          <div
-            style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on whether decisions are made through consistent, transparent, human-reviewable, and challengeable processes.</p>
+          <div style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
             <strong>Cards mapped:</strong><br>
             • Transparency & Appeal (Card 6)<br>
             • Risk-Based Use Limit (Card 5)
@@ -1137,48 +1173,49 @@
 
         <div class="debrief-card">
           <div class="debrief-card-header">
-            <span class="fairness-badge interpersonal">Interpersonal / Informational</span>
+            <span class="fairness-badge informational">Informational & Interpersonal</span>
           </div>
           <h3 style="font-family: 'Lora', serif; margin-bottom: 0.5rem;">Stakeholder Consent & Dignity</h3>
-          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on how individuals are
-            treated with respect, informed of surveillance, and granted agency over their identity data.</p>
-          <div
-            style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on how individuals are treated with respect, informed of biometric surveillance, and granted agency over identity data.</p>
+          <div style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
             <strong>Cards mapped:</strong><br>
             • Stakeholder Feedback (Card 4)
           </div>
         </div>
       </div>
 
-      <div
-        style="margin-top: 3rem; background: var(--bg-card); border: 1px solid var(--border-color); border-left: 5px solid var(--accent-indigo); border-radius: 10px; padding: 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.04);">
-        <h3 style="font-family: 'Lora', serif; color: var(--accent-indigo); margin-bottom: 1rem;">💡 Key Takeaways from
-          the Activity</h3>
-        <ul style="color: var(--text-muted); line-height: 1.8; padding-left: 1.5rem;">
-          <li><strong>Overall Accuracy Illusion:</strong> A model can be 98% accurate overall while concealing 6.2%
-            error rates on specific intersecting subgroups.</li>
-          <li><strong>Technical Accuracy vs Governance:</strong> Model updates (e.g. 99.2% accuracy) do NOT solve
-            missing non-binary representation, low-light errors, or lack of consent and appeal channels.</li>
-          <li><strong>Contextual & Risk-Based Proportionality:</strong> An automated error in gym access is an
-            inconvenience; a false match in police identification leads to severe, irreversible consequences.</li>
-        </ul>
+      <!-- Gender Shades Study Connection -->
+      <div style="margin-top: 2.5rem; background: #ffffff; border: 1px solid var(--border-color); border-left: 5px solid var(--accent-indigo); border-radius: 10px; padding: 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.04);">
+        <h3 style="font-family: 'Lora', serif; color: var(--accent-indigo); margin-bottom: 1rem;">📖 Case Study Connection: The Gender Shades Study</h3>
+        <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem;">
+          The landmark <strong>Gender Shades</strong> study (Joy Buolamwini & Timnit Gebru, 2018) evaluated commercial facial classification systems from major tech vendors. The study demonstrated that while overall vendor error rates were low (under 1–5% overall error rate), disaggregating performance revealed stark intersectional disparities: error rates for lighter-skinned males were under 1%, whereas error rates for darker-skinned females reached up to <strong>34.7%</strong>.
+        </p>
+        <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem;">
+          <em>Note on Fictional Scenario:</em> <strong>Campus FacePass and all numerical figures in this activity are fictional scenario data created for classroom discussion.</strong> The case study is inspired by real-world algorithmic fairness research showing how high aggregate accuracy hides subgroup harms.
+        </p>
+        <div style="font-size:0.9rem; background:#fbf9f5; border:1px solid var(--border-color); padding:0.85rem; border-radius:6px; color:var(--text-muted);">
+          <strong>Research Citation & Link:</strong><br>
+          Buolamwini, J., & Gebru, T. (2018). <em>Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification.</em> Proceedings of Machine Learning Research, 81, 77-91.<br>
+          <a href="https://proceedings.mlr.press/v81/buolamwini18a.html" target="_blank" rel="noopener noreferrer" style="color:var(--accent-blue); text-decoration:underline;">View original Gender Shades paper (PMLR)</a>
+        </div>
       </div>
 
       <div style="display: flex; justify-content: center; margin-top: 2rem;">
         <button class="btn btn-secondary" onclick="restartGame()">↻ Start New Session</button>
       </div>
-    </div>
+    </section>
 
-  </div>
+  </main>
 
   <!-- DYNAMIC EVIDENCE UNLOCKED MODAL -->
-  <div class="modal-overlay" id="evidence-modal">
+  <div class="modal-overlay" id="evidence-modal" role="dialog" aria-modal="true" aria-labelledby="evidence-modal-title">
     <div class="evidence-modal-card">
       <div class="evidence-header" id="evidence-header-bg">
         <div>
           <span class="evidence-badge" id="evidence-modal-badge">EVIDENCE UNLOCKED</span>
           <h3 class="evidence-title" id="evidence-modal-title">Evidence Title</h3>
         </div>
+        <button class="btn btn-secondary" onclick="closeEvidenceAndAdvance()" style="padding:0.3rem 0.6rem; font-size:0.8rem; background:rgba(255,255,255,0.2); color:white; border:none;" aria-label="Close modal">✕</button>
       </div>
       <div class="evidence-body" id="evidence-modal-body">
         <!-- Rendered dynamically -->
@@ -1187,31 +1224,41 @@
   </div>
 
   <!-- FACILITATOR GUIDE MODAL -->
-  <div class="modal-overlay" id="guide-modal">
-    <div class="evidence-modal-card" style="max-width: 800px;">
+  <div class="modal-overlay" id="guide-modal" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+    <div class="evidence-modal-card" style="max-width: 820px;">
       <div class="evidence-header" style="background: #1c1917;">
         <div>
           <span class="evidence-badge">TEACHING GUIDE</span>
-          <h3 class="evidence-title">📘 Facilitator Guide: Classroom Activity Mapping</h3>
+          <h3 class="evidence-title" id="guide-modal-title">📘 Facilitator Guide: Classroom Facilitation</h3>
         </div>
+        <button class="btn btn-secondary" onclick="toggleFacilitatorGuide()" style="padding:0.3rem 0.6rem; font-size:0.8rem; background:rgba(255,255,255,0.2); color:white; border:none;" aria-label="Close guide">✕</button>
       </div>
       <div class="evidence-body" style="font-size: 0.95rem; line-height: 1.6;">
-        <p style="margin-bottom: 1rem;"><strong>How the New Mechanics Surface Key Discussion Questions:</strong></p>
-        <ul
-          style="padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.85rem; color: var(--text-muted);">
-          <li><strong>Evidence Unlocking (Cards 1–6):</strong> Forces students to read and interpret empirical data
-            (e.g., aggregate 98% vs 6.2% subgroup error) rather than guessing answers.</li>
-          <li><strong>Breaking Event Cards:</strong> Events like the <em>False Match Incident</em> and <em>Model Update
-              (v1 vs v2)</em> demonstrate that technical accuracy improvements do not eliminate governance, consent, or
-            surveillance issues.</li>
-          <li><strong>Conditional Safeguards & "What Would Change Your Mind?":</strong> Teaches students to move beyond
-            binary "Launch vs Ban" debates by designing proportional safeguards and defining evidence-based thresholds.
-          </li>
-          <li><strong>"What Changed?" Reflection:</strong> Visualizes how team opinions evolve as information grows,
-            rewarding thoughtful reasoning over a fixed "correct" score.</li>
+        <div style="margin-bottom:1.5rem; background:#fbf9f5; border:1px solid var(--border-color); padding:1rem; border-radius:8px;">
+          <h4 style="font-family:'Lora',serif; color:var(--accent-indigo); margin-bottom:0.5rem;">⏱️ Activity Timing Comparison</h4>
+          <p><strong>Full Discussion Mode (25–35 Mins total):</strong></p>
+          <ul style="padding-left:1.2rem; font-size:0.88rem; color:var(--text-muted); margin-bottom:0.5rem;">
+            <li>Intro & Role Setup: 3–5 mins</li>
+            <li>4 Investigation Rounds & Events: 12–15 mins</li>
+            <li>Final Decisions & Evidence Citing: 5–8 mins</li>
+            <li>Trail Review, Class Comparison & Debrief: 5–7 mins</li>
+          </ul>
+          <p><strong>Quick Mode (10–15 Mins total):</strong></p>
+          <ul style="padding-left:1.2rem; font-size:0.88rem; color:var(--text-muted);">
+            <li>Intro: 2 mins | 2 Investigation Rounds + 1 Event: 5–7 mins | Final Decisions & Debrief: 3–5 mins</li>
+          </ul>
+        </div>
+
+        <h4 style="font-family:'Lora',serif; margin-bottom:0.5rem;">🗣️ Classroom Facilitation Prompts</h4>
+        <ul style="padding-left:1.2rem; display:flex; flex-direction:column; gap:0.75rem; color:var(--text-muted); margin-bottom:1.5rem;">
+          <li><strong>Opening the Activity:</strong> "Today we are evaluating Campus FacePass. The vendor claims 98% overall accuracy. As decision-makers, your job is not to find a single 'correct' answer, but to investigate evidence, define safeguards, and justify your choices."</li>
+          <li><strong>Assigning Cards to Groups:</strong> "To see how information shapes decisions, Team 1 should start with <em>Overall Accuracy</em>, Team 2 with <em>Intersectional Audit</em>, and Team 3 with <em>Stakeholder Feedback</em>."</li>
+          <li><strong>Handling Disagreement:</strong> "If your group is split on launching or pausing police use, identify what specific safeguard or evidence threshold would resolve the debate."</li>
         </ul>
-        <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
-          <button class="btn btn-secondary" onclick="toggleFacilitatorGuide()">Close Guide</button>
+
+        <div style="display: flex; justify-content: space-between; align-items:center; margin-top: 1.5rem;">
+          <button class="btn btn-secondary no-print" onclick="window.print()">🖨️ Print Compact Facilitator Guide</button>
+          <button class="btn btn-primary" onclick="toggleFacilitatorGuide()">Close Guide</button>
         </div>
       </div>
     </div>
@@ -1219,60 +1266,74 @@
 
   <script>
     // GAME STATE & DATA
+    const ROLES_DATA = [
+      { id: "r1", title: "🎓 Student Representative", desc: "Prioritizes student privacy, convenience, consent, and preventing wrongful access denials." },
+      { id: "r2", title: "♿ Disability-Access Advocate", desc: "Focuses on accessibility, low-light/camera hardware disparities, and non-discriminatory access." },
+      { id: "r3", title: "⚖️ Privacy / Civil Liberties Advocate", desc: "Focuses on surveillance creep, biometric data retention, consent, and procedural appeal rights." },
+      { id: "r4", title: "🛡️ Campus Security Representative", desc: "Prioritizes swift access control, facility protection, and emergency identification capabilities." },
+      { id: "r5", title: "🔬 Faculty / Lab Representative", desc: "Focuses on uninterrupted research lab access, false denial impact on work, and physical safety." },
+      { id: "r6", title: "🏛️ University Administrator", desc: "Balances institutional risk, vendor contracts, operational cost, and public community trust." }
+    ];
+
     const CARDS_DATA = [
       {
         id: 1,
         title: "Overall Accuracy Check",
-        desc: "Request the vendor's average benchmark evaluation across the test dataset.",
-        evidenceTitle: "CARD 1 — Overall Accuracy Check",
+        desc: "Request the vendor's average benchmark evaluation across the entire test dataset.",
+        evidenceTitle: "CARD 1 — Overall Accuracy Benchmark",
         renderEvidence: () => `
           <div class="evidence-box">
-            <p><strong>Vendor Report Finding:</strong> "The vendor reports 98% overall accuracy across the evaluation dataset."</p>
+            <p><strong>Vendor Benchmark Report (Fictional Scenario Data):</strong> "The vendor reports 98.0% overall accuracy across the evaluation dataset."</p>
             <table class="evidence-table">
-              <tr><th>Metric</th><th>Result</th></tr>
-              <tr><td>Overall Accuracy</td><td><strong>98.0%</strong></td></tr>
-              <tr><td>Evaluation Population</td><td>10,000 individuals</td></tr>
-              <tr><td>Important Limitation</td><td>The overall figure combines all tested demographic groups into a single average.</td></tr>
+              <tr><th>Metric</th><th>Result</th><th>Technical Definition</th></tr>
+              <tr><td>Overall Accuracy</td><td><strong>98.0%</strong></td><td>Proportion of correct matches and correct rejections overall.</td></tr>
+              <tr><td>General Error Rate</td><td><strong>2.0%</strong></td><td>Proportion of incorrect decisions overall.</td></tr>
+              <tr><td>Evaluation Population</td><td>10,000 individuals</td><td>Fictional benchmark test dataset.</td></tr>
             </table>
+            <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.4rem;">
+              <span class="metric-tooltip-trigger">Why Aggregate Accuracy Conceals Disparities ℹ️
+                <span class="metric-tooltip-box">If 95% of a test population belongs to a majority demographic with 99% accuracy, overall accuracy will remain high (~98%) even if minority subgroups experience severe false-match error rates (e.g. >6%).</span>
+              </span>
+            </p>
           </div>
           <div class="prompt-callout">
             <strong>Discussion Prompt:</strong>
-            "What does this number tell you — and what does it NOT tell you?"
+            "What does this aggregate 98% figure tell you — and what disaggregated false-match data is still missing?"
           </div>
-          <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
-            <strong>Trade-off:</strong> You have limited investigation time. You can either continue with the aggregate result or spend a later round investigating how errors are distributed.
+          <div class="missing-evidence-box">
+            <strong>Missing Evidence Notice:</strong> Investigating aggregate accuracy alone does NOT reveal subgroup false match rates, missing populations (e.g. non-binary users), or user appeal channels.
           </div>
         `
       },
       {
         id: 2,
         title: "Intersectional Audit",
-        desc: "Disaggregate model performance across combined demographic subgroups.",
-        evidenceTitle: "CARD 2 — Intersectional Audit Findings",
+        desc: "Disaggregate performance across combined demographic subgroup intersections.",
+        evidenceTitle: "CARD 2 — Intersectional Disaggregated Audit",
         renderEvidence: () => `
           <div class="evidence-box">
-            <p><strong>Audit Finding:</strong> "Your audit separates performance across combined demographic groups."</p>
+            <p><strong>Audit Finding (Fictional Scenario Data):</strong> Performance disaggregated across combined demographic intersections:</p>
             <table class="evidence-table">
               <thead>
-                <tr><th>Demographic Subgroup Intersection</th><th>False Match / Error Rate</th></tr>
+                <tr><th>Subgroup Intersection</th><th>False Match Rate (FMR)</th><th>False Non-Match Rate (FNMR)</th></tr>
               </thead>
               <tbody>
-                <tr><td>Group A (Lighter Males)</td><td>0.8%</td></tr>
-                <tr><td>Group B (Lighter Females)</td><td>1.1%</td></tr>
-                <tr><td>Group C (Darker Males)</td><td>3.7%</td></tr>
-                <tr><td>Group D (Darker Females)</td><td><strong>6.2%</strong></td></tr>
+                <tr><td>Group A (Lighter Males)</td><td>0.8%</td><td>1.2%</td></tr>
+                <tr><td>Group B (Lighter Females)</td><td>1.1%</td><td>1.8%</td></tr>
+                <tr><td>Group C (Darker Males)</td><td>3.7%</td><td>4.1%</td></tr>
+                <tr><td>Group D (Darker Females)</td><td><strong>6.2%</strong></td><td><strong>8.5%</strong></td></tr>
               </tbody>
             </table>
-            <p style="font-size:0.9rem; color:var(--text-muted); margin-top:0.5rem;">
-              <em>The overall 98% accuracy figure did not reveal these significant disparities between groups.</em>
+            <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.4rem;">
+              <strong>Metric Note:</strong> <em>False Match Rate (FMR)</em> occurs when the system incorrectly matches two different people. <em>False Non-Match Rate (FNMR)</em> occurs when the system fails to match a valid user.
             </p>
           </div>
           <div class="prompt-callout">
             <strong>Discussion Prompt:</strong>
-            "Which intersections would you investigate further, and why?"
+            "Which subgroup false-match disparities concern your team most, and why?"
           </div>
-          <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
-            <strong>Trade-off:</strong> Conducting deeper intersectional evaluation takes additional time and may delay system launch.
+          <div class="missing-evidence-box">
+            <strong>Missing Evidence Notice:</strong> Disaggregated metrics show error disparities, but do NOT reveal whether non-binary/trans users were tested, or how false denials affect student stakeholders.
           </div>
         `
       },
@@ -1280,28 +1341,28 @@
         id: 3,
         title: "Expand Categories",
         desc: "Investigate whether binary gender and broad skin-tone categories miss key populations.",
-        evidenceTitle: "CARD 3 — Category Expansion Findings",
+        evidenceTitle: "CARD 3 — Category & Population Scope Audit",
         renderEvidence: () => `
           <div class="evidence-box">
-            <p><strong>Audit Finding:</strong> "The original evaluation only tested male/female categories and broad lighter/darker skin-tone groups."</p>
-            <p style="font-weight:700; margin-top:0.75rem; margin-bottom:0.3rem;">Untested Conditions & Missing Populations:</p>
+            <p><strong>Audit Finding (Fictional Scenario Data):</strong> The initial audit only evaluated binary male/female categories and broad lighter/darker skin tones.</p>
+            <p style="font-weight:700; margin-top:0.75rem; margin-bottom:0.3rem;">Untested Populations & Conditions:</p>
             <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:0.5rem;">
               <div style="background:#ffffff; border:1px solid var(--border-color); padding:0.4rem 0.8rem; border-radius:4px; font-size:0.88rem;">• Non-binary users</div>
               <div style="background:#ffffff; border:1px solid var(--border-color); padding:0.4rem 0.8rem; border-radius:4px; font-size:0.88rem;">• Trans users</div>
-              <div style="background:#ffffff; border:1px solid var(--border-color); padding:0.4rem 0.8rem; border-radius:4px; font-size:0.88rem;">• Age differences</div>
+              <div style="background:#ffffff; border:1px solid var(--border-color); padding:0.4rem 0.8rem; border-radius:4px; font-size:0.88rem;">• Age variations</div>
               <div style="background:#ffffff; border:1px solid var(--border-color); padding:0.4rem 0.8rem; border-radius:4px; font-size:0.88rem;">• Disability conditions</div>
-              <div style="background:#ffffff; border:1px solid var(--border-color); padding:0.4rem 0.8rem; border-radius:4px; font-size:0.88rem;">• Hijab / head coverings</div>
+              <div style="background:#ffffff; border:1px solid var(--border-color); padding:0.4rem 0.8rem; border-radius:4px; font-size:0.88rem;">• Hijabs / headwear</div>
               <div style="background:#ffffff; border:1px solid var(--border-color); padding:0.4rem 0.8rem; border-radius:4px; font-size:0.88rem;">• Masks & face wear</div>
               <div style="background:#ffffff; border:1px solid var(--border-color); padding:0.4rem 0.8rem; border-radius:4px; font-size:0.88rem;">• Low-light environments</div>
-              <div style="background:#ffffff; border:1px solid var(--border-color); padding:0.4rem 0.8rem; border-radius:4px; font-size:0.88rem;">• Different camera hardware</div>
+              <div style="background:#ffffff; border:1px solid var(--border-color); padding:0.4rem 0.8rem; border-radius:4px; font-size:0.88rem;">• Hardware variations</div>
             </div>
           </div>
           <div class="prompt-callout">
             <strong>Discussion Prompt:</strong>
             "What important populations or environmental conditions might be missing from the evaluation?"
           </div>
-          <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
-            <strong>Trade-off:</strong> Collecting representative data for expanded categories requires complex evaluation and higher costs.
+          <div class="missing-evidence-box">
+            <strong>Missing Evidence Notice:</strong> Identifying missing populations highlights evaluation gaps, but does not provide statistical error rates or procedural appeal rights.
           </div>
         `
       },
@@ -1309,191 +1370,163 @@
         id: 4,
         title: "Stakeholder Feedback",
         desc: "Consult affected campus communities to gather perspectives on potential harms.",
-        evidenceTitle: "CARD 4 — Stakeholder Consultations",
+        evidenceTitle: "CARD 4 — Campus Community Consultations",
         renderEvidence: () => `
           <div class="evidence-box">
-            <p><strong>Feedback Collected:</strong> Real feedback gathered from campus community members:</p>
-            <div class="stakeholder-grid">
-              <div class="stakeholder-card">
-                <div class="stakeholder-role">🎓 Undergraduate Student</div>
-                <p style="font-size:0.88rem; font-style:italic;">"I don't want my face scanned and stored just to enter the campus gym or grab lunch."</p>
+            <p><strong>Stakeholder Voices (Fictional Scenario Data):</strong></p>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:0.75rem; margin-top:0.5rem;">
+              <div style="background:#ffffff; border:1px solid var(--border-color); border-left:4px solid var(--accent-indigo); padding:0.85rem; border-radius:6px;">
+                <strong>🎓 Student:</strong> "I don't want my facial biometric stored just to enter the gym."
               </div>
-              <div class="stakeholder-card">
-                <div class="stakeholder-role">🔬 Graduate Researcher</div>
-                <p style="font-size:0.88rem; font-style:italic;">"If I'm repeatedly denied access to my research lab because of a false match, that directly affects my work and deadlines."</p>
+              <div style="background:#ffffff; border:1px solid var(--border-color); border-left:4px solid var(--accent-amber); padding:0.85rem; border-radius:6px;">
+                <strong>🔬 Graduate Researcher:</strong> "False access denials at research lab doors disrupt time-sensitive experiments."
               </div>
-              <div class="stakeholder-card">
-                <div class="stakeholder-role">🛡️ Campus Security Officer</div>
-                <p style="font-size:0.88rem; font-style:italic;">"We need fast, reliable identification tools during high-risk security incidents and emergency building lockdowns."</p>
+              <div style="background:#ffffff; border:1px solid var(--border-color); border-left:4px solid var(--accent-emerald); padding:0.85rem; border-radius:6px;">
+                <strong>🛡️ Campus Security:</strong> "Fast biometric ID is essential during emergency building lockdowns."
               </div>
-              <div class="stakeholder-card">
-                <div class="stakeholder-role">⚖️ Privacy & Civil Liberties Advocate</div>
-                <p style="font-size:0.88rem; font-style:italic;">"Even a highly accurate facial recognition system creates constant surveillance concerns and normalizes biometric tracking."</p>
+              <div style="background:#ffffff; border:1px solid var(--border-color); border-left:4px solid var(--accent-purple); padding:0.85rem; border-radius:6px;">
+                <strong>⚖️ Civil Liberties Advocate:</strong> "System accuracy does not eliminate surveillance normalization concerns."
               </div>
             </div>
           </div>
           <div class="prompt-callout">
             <strong>Discussion Prompt:</strong>
-            "Which concerns should affect the deployment decision, and how?"
+            "Which stakeholder concerns should influence deployment safeguards, and how?"
           </div>
-          <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
-            <strong>Trade-off:</strong> Engaging stakeholders increases public pressure for pausing or strictly limiting system scope.
+          <div class="missing-evidence-box">
+            <strong>Missing Evidence Notice:</strong> Stakeholder qualitative feedback highlights community values, but does not quantify technical false-match rates.
           </div>
         `
       },
       {
         id: 5,
         title: "Risk-Based Use Limit",
-        desc: "Evaluate the consequences of errors across different operational contexts.",
-        evidenceTitle: "CARD 5 — Risk Analysis by Deployment Context",
+        desc: "Evaluate the consequences of false match errors across operational contexts.",
+        evidenceTitle: "CARD 5 — Contextual Risk Comparison",
         renderEvidence: () => `
           <div class="evidence-box">
-            <p><strong>Contextual Risk Breakdown:</strong></p>
+            <p><strong>Risk & Harm Matrix (Fictional Scenario Data):</strong></p>
             <div style="display:flex; flex-direction:column; gap:0.75rem; margin-top:0.5rem;">
               <div style="background:#ffffff; border:1px solid var(--border-color); padding:0.85rem; border-radius:6px;">
                 <span class="risk-badge risk-low">Library & Gym Access</span> — <strong>Low Risk</strong>
-                <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.2rem;">Potential consequence of error: Temporary inconvenience or manual ID check.</p>
+                <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.2rem;">Consequence of False Non-Match: Minor inconvenience or manual card fallback.</p>
               </div>
               <div style="background:#ffffff; border:1px solid var(--border-color); padding:0.85rem; border-radius:6px;">
                 <span class="risk-badge risk-medium">Dorm & Lab Access</span> — <strong>Medium / High Risk</strong>
-                <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.2rem;">Potential consequence of error: Inability to access personal housing, research data, or time-sensitive lab work.</p>
+                <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.2rem;">Consequence of False Non-Match: Denial of housing or research access.</p>
               </div>
               <div style="background:#ffffff; border:1px solid var(--border-color); padding:0.85rem; border-radius:6px;">
                 <span class="risk-badge risk-high">Campus Police ID Support</span> — <strong>High Risk</strong>
-                <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.2rem;">Potential consequence of error: Misidentification, security investigation, or wrongful enforcement action.</p>
+                <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.2rem;">Consequence of False Match: Wrongful police investigation or enforcement action.</p>
               </div>
             </div>
           </div>
           <div class="prompt-callout">
             <strong>Discussion Prompt:</strong>
-            "Should the same accuracy threshold and safeguards apply to all three uses?"
+            "Should the same accuracy threshold and safeguards apply to all three use cases?"
           </div>
-          <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
-            <strong>Trade-off:</strong> Restricting high-risk uses may cause pushback from security stakeholders or vendor contract negotiations.
+          <div class="missing-evidence-box">
+            <strong>Missing Evidence Notice:</strong> Risk mapping categorizes harms, but does not provide procedural recourse or disaggregated audit metrics.
           </div>
         `
       },
       {
         id: 6,
         title: "Transparency & Appeal",
-        desc: "Investigate user recourse, notification, and challenge mechanisms.",
-        evidenceTitle: "CARD 6 — User Experience & Procedural Review",
+        desc: "Investigate user recourse, notification, and human challenge mechanisms.",
+        evidenceTitle: "CARD 6 — User Recourse & Transparency Review",
         renderEvidence: () => `
           <div class="evidence-box">
-            <p><strong>Fictional User Scenario Revealed:</strong></p>
-            <p style="font-style:italic; margin-bottom:0.75rem;">"A student is incorrectly denied access to a building by FacePass."</p>
-            <p>The student currently:</p>
+            <p><strong>User Experience Audit (Fictional Scenario Data):</strong></p>
+            <p style="font-style:italic; margin-bottom:0.75rem;">"A student is incorrectly denied access to a campus building by FacePass."</p>
+            <p>Current Status:</p>
             <ul style="padding-left:1.2rem; font-size:0.9rem; color:var(--text-muted); margin-bottom:0.75rem;">
-              <li>Does not know why access was denied.</li>
-              <li>Does not know whether a human reviewed the decision.</li>
-              <li>Does not know how or where to challenge the automated denial.</li>
+              <li>User receives no explanation for why access was denied.</li>
+              <li>No human oversight or review is conducted automatically.</li>
+              <li>No clear appeal or dispute process exists.</li>
             </ul>
-            <p><strong>Governance Option:</strong> Your team can recommend an appeal and human-review process, but this will not improve the model's underlying accuracy.</p>
+            <p><strong>Procedural Note:</strong> Establishing appeal channels improves procedural fairness, but does not alter underlying model error rates.</p>
           </div>
           <div class="prompt-callout">
             <strong>Discussion Prompt:</strong>
-            "What would a fair process look like after an automated error?"
+            "What procedural safeguards are required to make automated decisions fair?"
           </div>
-          <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
-            <strong>Trade-off:</strong> Appeals improve procedural fairness but add administrative overhead without fixing model flaws.
+          <div class="missing-evidence-box">
+            <strong>Missing Evidence Notice:</strong> Transparency improves procedural justice, but does not fix underlying subgroup false match disparities.
           </div>
         `
       }
     ];
 
-    const ROUNDS = [
-      { number: 1, title: "Round 1 — Pre-launch Testing", prompt: "The vendor says Campus FacePass is ready. What do you check first?" },
-      { number: 2, title: "Round 2 — Audit Limitation", prompt: "The first evaluation only used male/female gender categories and broad lighter/darker skin tones. What do you do next?" },
-      { number: 3, title: "Round 3 — Product Use Decision", prompt: "The university considers using the system for library access, dorm access, and campus police identification. Do you treat all uses the same?" },
-      { number: 4, title: "Round 4 — Breaking Update & Reflection", prompt: "A major update arrives. How does your team respond to new evidence and remaining uncertainties?" }
-    ];
-
-    const EVENTS = [
+    const EVENTS_DATA = [
       {
         id: "event-1",
-        triggerAfterRound: 2,
         title: "🚨 INCIDENT REPORT: False Match Denial",
         render: () => `
           <div class="evidence-box">
-            <p><strong>Scenario:</strong> A student is incorrectly denied access to a research laboratory after a false match error.</p>
-            <p style="font-size:0.9rem; color:var(--text-muted); margin-top:0.4rem;">
-              <em>Additional Details:</em> The student states they were never informed that facial recognition was active and have no clear process to challenge the denial.
+            <p><strong>Scenario (Fictional Event):</strong> A student is incorrectly denied access to a research lab after a false match error.</p>
+            <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.4rem;">
+              <em>Details:</em> The student was unaware facial recognition was active and found no way to challenge the denial.
             </p>
           </div>
-          <div style="font-weight:700; margin-bottom:0.5rem;">What safeguard should the university add? (Select all that apply)</div>
+          <div style="font-weight:700; margin-bottom:0.5rem;">Select required safeguards:</div>
           <div class="event-options-group" id="event-1-opts">
             <label class="event-opt-label"><input type="checkbox" value="Continue deployment unchanged"> Continue deployment unchanged</label>
-            <label class="event-opt-label"><input type="checkbox" value="Require human review"> Require human review after any match failure</label>
-            <label class="event-opt-label"><input type="checkbox" value="Add an appeal process"> Add an official appeal and challenge process</label>
-            <label class="event-opt-label"><input type="checkbox" value="Restrict FacePass to lower-risk spaces"> Restrict FacePass strictly to lower-risk spaces</label>
-            <label class="event-opt-label"><input type="checkbox" value="Pause the affected deployment"> Pause the affected laboratory deployment immediately</label>
+            <label class="event-opt-label"><input type="checkbox" value="Require human review"> Require human review after match failure</label>
+            <label class="event-opt-label"><input type="checkbox" value="Add an appeal process"> Add official appeal process</label>
+            <label class="event-opt-label"><input type="checkbox" value="Restrict FacePass to lower-risk spaces"> Restrict FacePass to low-risk spaces</label>
+            <label class="event-opt-label"><input type="checkbox" value="Pause the affected deployment"> Pause laboratory deployment</label>
           </div>
         `
       },
       {
         id: "event-2",
-        triggerAfterRound: 3,
         title: "🚨 SECURITY REQUEST: Off-Label Police Usage",
         render: () => `
           <div class="evidence-box">
-            <p><strong>Scenario:</strong> Campus Police asks to use FacePass to identify a person captured on a campus security camera footage after a theft report.</p>
+            <p><strong>Scenario (Fictional Event):</strong> Campus Police requests to run FacePass against camera footage to identify a suspect after a reported theft.</p>
           </div>
-          <div style="font-weight:700; margin-bottom:0.5rem;">Does permission to use FacePass for campus access automatically justify this new law enforcement use?</div>
+          <div style="font-weight:700; margin-bottom:0.5rem;">Does access deployment justify police search usage?</div>
           <div class="event-options-group" id="event-2-opts">
-            <label class="event-opt-label"><input type="radio" name="e2-radio" value="Yes"> Yes — security needs override access scope</label>
+            <label class="event-opt-label"><input type="radio" name="e2-radio" value="Yes"> Yes — security needs override scope</label>
             <label class="event-opt-label"><input type="radio" name="e2-radio" value="No" checked> No — access permission does not justify police search</label>
-            <label class="event-opt-label"><input type="radio" name="e2-radio" value="Only with additional safeguards"> Only with warrant / independent judicial review</label>
-            <label class="event-opt-label"><input type="radio" name="e2-radio" value="Need more information"> Need more information regarding crime severity</label>
-          </div>
-          <div style="margin-top:1rem;">
-            <label style="font-weight:700; font-size:0.9rem; display:block; margin-bottom:0.3rem;">Team Justification:</label>
-            <input type="text" class="final-input" id="event-2-just" placeholder="Briefly justify your team's stance on this security request..." />
+            <label class="event-opt-label"><input type="radio" name="e2-radio" value="Only with additional safeguards"> Only with independent judicial warrant</label>
           </div>
         `
       },
       {
         id: "event-3",
-        triggerAfterRound: 3,
         title: "🚨 MODEL UPDATE: Technical Upgrade Benchmark",
         render: () => `
           <div class="evidence-box">
-            <p><strong>Vendor Announcement:</strong> The vendor has deployed Model Version 2.0 with improved accuracy benchmarks.</p>
+            <p><strong>Vendor Update (Fictional Scenario Data):</strong> Vendor deploys Model Version 2.0.</p>
             <table class="evidence-table">
               <thead>
-                <tr><th>Evaluation Metric</th><th>Version 1 (Initial)</th><th>Version 2 (Updated)</th></tr>
+                <tr><th>Metric</th><th>Version 1</th><th>Version 2</th></tr>
               </thead>
               <tbody>
                 <tr><td>Overall Accuracy</td><td>98.0%</td><td><strong>99.2%</strong></td></tr>
                 <tr><td>Largest Subgroup Error Gap</td><td>6.2%</td><td><strong>1.8%</strong></td></tr>
                 <tr><td>Non-binary Users Tested</td><td>No</td><td><strong>No</strong></td></tr>
-                <tr><td>Low-light Testing</td><td>No</td><td><strong>No</strong></td></tr>
                 <tr><td>Appeals Process Built-in</td><td>No</td><td><strong>No</strong></td></tr>
-                <tr><td>Data Retention Policy</td><td>Unchanged</td><td>Unchanged</td></tr>
               </tbody>
             </table>
           </div>
           <div class="prompt-callout">
             <strong>Discussion Prompt:</strong>
-            "The model's accuracy gap has improved. What ethical or governance concerns remain unsolved?"
+            "The technical error gap improved to 1.8%. What governance, consent, or surveillance concerns remain?"
           </div>
         `
       },
       {
         id: "event-4",
-        triggerAfterRound: 3,
-        title: "🚨 STAKEHOLDER CHALLENGE: 60-Second Defense",
+        title: "🚨 STAKEHOLDER CHALLENGE: 60-Second Team Defense",
         render: () => `
           <div class="evidence-box">
-            <p><strong>Challenge from Student Council Representative:</strong></p>
-            <p style="font-style:italic;">"You have proposed deployment with safeguards. Explain why the university community should trust your recommendations."</p>
+            <p><strong>Student Council Challenge:</strong> "Explain why the campus community should trust your proposed deployment and safeguards."</p>
           </div>
-          <div style="background:rgba(180,83,9,0.08); border:1px solid var(--accent-amber); padding:1rem; border-radius:6px; margin-bottom:1rem;">
-            <strong>⏱️ 60-Second Team Discussion Challenge:</strong> Identify the following 3 elements before proceeding:
-          </div>
-          <div style="display:flex; flex-direction:column; gap:0.75rem;">
-            <input type="text" class="final-input" id="sc-risk" placeholder="1. One risk your team is accepting..." />
-            <input type="text" class="final-input" id="sc-safeguard" placeholder="2. One safeguard your team is requiring..." />
-            <input type="text" class="final-input" id="sc-evidence" placeholder="3. One piece of future evidence that could change your mind..." />
+          <div style="background:rgba(180,83,9,0.08); border:1px solid var(--accent-amber); padding:0.85rem; border-radius:6px; margin-bottom:1rem;">
+            <strong>⏱️ 60-Second Team Discussion:</strong> Align on your defense before proceeding.
           </div>
         `
       }
@@ -1516,37 +1549,71 @@
     ];
 
     // State Variables
+    let gameMode = "full"; // "full" or "quick"
+    let selectedRoleId = "r1";
     let currentRoundIndex = 0;
     let selectedCardId = null;
-    let playedCards = []; // { round, card, evidenceRevealed }
-    let eventsEncountered = []; // { eventId, userResponse }
+    let playedCards = [];
+    let eventsEncountered = [];
     let finalDecisionsData = [
-      { decision: "Launch", safeguards: ["Human review"], mindChanger: "" },
-      { decision: "Limited Launch", safeguards: ["Human review", "Appeal process"], mindChanger: "" },
-      { decision: "Pause", safeguards: ["Independent audit"], mindChanger: "" }
+      { decision: "Launch", safeguards: ["Human review"], evidenceCiting: "", mindChanger: "", uncertainty: "", monitoring: "" },
+      { decision: "Limited Launch", safeguards: ["Human review", "Appeal process"], evidenceCiting: "", mindChanger: "", uncertainty: "", monitoring: "" },
+      { decision: "Pause", safeguards: ["Independent audit"], evidenceCiting: "", mindChanger: "", uncertainty: "", monitoring: "" }
     ];
-    let reflectionData = { choice: "Yes — our decision changed.", why: "" };
 
-    // Initialization
     window.onload = () => {
-      renderCards();
-      renderFinalForm();
+      renderRoles();
     };
+
+    function selectMode(mode) {
+      gameMode = mode;
+      document.getElementById("mode-full").className = `mode-card ${mode === 'full' ? 'selected' : ''}`;
+      document.getElementById("mode-full").setAttribute("aria-checked", mode === 'full');
+      document.getElementById("mode-quick").className = `mode-card ${mode === 'quick' ? 'selected' : ''}`;
+      document.getElementById("mode-quick").setAttribute("aria-checked", mode === 'quick');
+    }
+
+    function renderRoles() {
+      const container = document.getElementById("roles-container");
+      container.innerHTML = ROLES_DATA.map(r => `
+        <div class="role-card ${selectedRoleId === r.id ? 'selected' : ''}" onclick="selectRole('${r.id}')" tabindex="0" role="radio" aria-checked="${selectedRoleId === r.id}">
+          <h5>${r.title}</h5>
+          <div class="role-desc">${r.desc}</div>
+        </div>
+      `).join('');
+    }
+
+    function selectRole(roleId) {
+      selectedRoleId = roleId;
+      renderRoles();
+    }
 
     function startGame() {
       showScreen("screen-game");
-      updateProgressBar(1);
+      updateProgressBar(2);
+
+      const roleObj = ROLES_DATA.find(r => r.id === selectedRoleId);
+      document.getElementById("role-badge-sidebar").innerText = `Assigned Role: ${roleObj ? roleObj.title : 'None'}`;
+
+      currentRoundIndex = 0;
       renderRound();
       renderCards();
     }
 
     function showScreen(screenId) {
-      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-      document.getElementById(screenId).classList.add("active");
+      document.querySelectorAll(".screen").forEach(s => {
+        s.classList.remove("active");
+        s.setAttribute("aria-hidden", "true");
+      });
+      const target = document.getElementById(screenId);
+      if (target) {
+        target.classList.add("active");
+        target.removeAttribute("aria-hidden");
+      }
     }
 
     function updateProgressBar(stepNum) {
-      for (let i = 1; i <= 7; i++) {
+      for (let i = 1; i <= 6; i++) {
         const el = document.getElementById(`p-step-${i}`);
         if (!el) continue;
         el.className = "progress-step";
@@ -1556,11 +1623,19 @@
     }
 
     function renderRound() {
-      const round = ROUNDS[currentRoundIndex];
-      document.getElementById("round-number-badge").innerText = `Round ${round.number} of 4`;
-      document.getElementById("round-title-text").innerText = round.title;
-      document.getElementById("round-prompt-text").innerText = round.prompt;
-      updateProgressBar(currentRoundIndex + 1);
+      const totalRounds = gameMode === 'quick' ? 2 : 4;
+      document.getElementById("round-number-badge").innerText = `Round ${currentRoundIndex + 1} of ${totalRounds} (${gameMode === 'quick' ? 'Quick Mode' : 'Full Mode'})`;
+      
+      const prompts = [
+        "The vendor claims 98% accuracy. What investigation card will your team play first?",
+        "Initial evaluations used binary male/female categories. What card do you investigate next?",
+        "Campus departments request different access permissions. What card do you play next?",
+        "A major update arrives. How does your team investigate remaining uncertainties?"
+      ];
+
+      document.getElementById("round-title-text").innerText = `Round ${currentRoundIndex + 1} — Investigation`;
+      document.getElementById("round-prompt-text").innerText = prompts[currentRoundIndex] || prompts[0];
+      updateProgressBar(2);
     }
 
     function renderCards() {
@@ -1571,11 +1646,14 @@
         const isPlayed = playedCards.some(p => p.card.id === card.id);
         const isSelected = selectedCardId === card.id;
 
-        const cardEl = document.createElement("div");
+        const cardEl = document.createElement("button");
         cardEl.className = `decision-card ${isPlayed ? 'played' : ''} ${isSelected ? 'selected' : ''}`;
-
+        cardEl.setAttribute("aria-pressed", isSelected);
+        
         if (!isPlayed) {
           cardEl.onclick = () => selectCard(card.id);
+        } else {
+          cardEl.disabled = true;
         }
 
         cardEl.innerHTML = `
@@ -1586,7 +1664,7 @@
             <div class="card-action-desc">${card.desc}</div>
           </div>
           <div style="font-size: 0.8rem; color: var(--accent-indigo); font-weight: 600;">
-            ${isPlayed ? '✓ Evidence Unlocked' : '🔍 Click to Investigate →'}
+            ${isPlayed ? '✓ Evidence Unlocked' : '🔍 Investigate Card →'}
           </div>
         `;
 
@@ -1595,11 +1673,7 @@
     }
 
     function selectCard(cardId) {
-      if (selectedCardId === cardId) {
-        selectedCardId = null;
-      } else {
-        selectedCardId = cardId;
-      }
+      selectedCardId = (selectedCardId === cardId) ? null : cardId;
       renderCards();
       document.getElementById("play-card-btn").disabled = (selectedCardId === null);
     }
@@ -1609,29 +1683,25 @@
 
       const cardObj = CARDS_DATA.find(c => c.id === selectedCardId);
       playedCards.push({
-        round: ROUNDS[currentRoundIndex].number,
+        round: currentRoundIndex + 1,
         card: cardObj
       });
 
-      const playedCardId = selectedCardId;
       selectedCardId = null;
       document.getElementById("play-card-btn").disabled = true;
 
       updateHistory();
       renderCards();
-
-      // Show Evidence Modal for the played card
       showEvidenceModal(cardObj);
     }
 
     function showEvidenceModal(cardObj) {
       const modal = document.getElementById("evidence-modal");
-      const headerBg = document.getElementById("evidence-header-bg");
-      headerBg.className = "evidence-header";
-
-      document.getElementById("evidence-modal-badge").innerText = `EVIDENCE UNLOCKED — ROUND ${ROUNDS[currentRoundIndex].number}`;
+      modal.removeAttribute("aria-hidden");
+      
+      document.getElementById("evidence-modal-badge").innerText = `EVIDENCE UNLOCKED — ROUND ${currentRoundIndex + 1}`;
       document.getElementById("evidence-modal-title").innerText = cardObj.evidenceTitle;
-
+      
       const body = document.getElementById("evidence-modal-body");
       body.innerHTML = `
         ${cardObj.renderEvidence()}
@@ -1644,33 +1714,40 @@
     }
 
     function closeEvidenceAndAdvance() {
-      document.getElementById("evidence-modal").classList.remove("active");
+      const modal = document.getElementById("evidence-modal");
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
 
-      // Check if an Event should trigger after this round
-      const currentRoundNum = ROUNDS[currentRoundIndex].number;
+      const totalRounds = gameMode === 'quick' ? 2 : 4;
+      const currentRoundNum = currentRoundIndex + 1;
 
-      if (currentRoundNum === 2 && !eventsEncountered.some(e => e.eventId === 'event-1')) {
-        showEventModal(EVENTS.find(e => e.id === 'event-1'));
+      // Event Triggers
+      if (gameMode === 'quick' && currentRoundNum === 1 && !eventsEncountered.some(e => e.eventId === 'event-1')) {
+        showEventModal(EVENTS_DATA.find(e => e.id === 'event-1'));
         return;
       }
 
-      if (currentRoundNum === 3 && !eventsEncountered.some(e => e.eventId === 'event-2')) {
-        showEventModal(EVENTS.find(e => e.id === 'event-2'));
+      if (gameMode === 'full' && currentRoundNum === 2 && !eventsEncountered.some(e => e.eventId === 'event-1')) {
+        showEventModal(EVENTS_DATA.find(e => e.id === 'event-1'));
         return;
       }
 
-      // Advance rounds
-      if (currentRoundIndex < 3) {
+      if (gameMode === 'full' && currentRoundNum === 3 && !eventsEncountered.some(e => e.eventId === 'event-2')) {
+        showEventModal(EVENTS_DATA.find(e => e.id === 'event-2'));
+        return;
+      }
+
+      if (currentRoundIndex < totalRounds - 1) {
         currentRoundIndex++;
         renderRound();
       } else {
-        // Move to Final Decisions Sheet
         showFinalSheet();
       }
     }
 
     function showEventModal(eventObj) {
       const modal = document.getElementById("evidence-modal");
+      modal.removeAttribute("aria-hidden");
       const headerBg = document.getElementById("evidence-header-bg");
       headerBg.className = "evidence-header event-header";
 
@@ -1689,34 +1766,16 @@
     }
 
     function saveEventAndAdvance(eventId) {
-      // Record response summary
-      let responseSummary = "Event reviewed.";
-      if (eventId === 'event-1') {
-        const checked = Array.from(document.querySelectorAll('#event-1-opts input:checked')).map(i => i.value);
-        responseSummary = checked.length ? checked.join(', ') : 'No safeguards selected.';
-      } else if (eventId === 'event-2') {
-        const rad = document.querySelector('input[name="e2-radio"]:checked');
-        const just = document.getElementById('event-2-just')?.value || '';
-        responseSummary = `Stance: ${rad ? rad.value : 'No stance'}. Justification: ${just}`;
-      } else if (eventId === 'event-4') {
-        const r = document.getElementById('sc-risk')?.value || '';
-        const s = document.getElementById('sc-safeguard')?.value || '';
-        const e = document.getElementById('sc-evidence')?.value || '';
-        responseSummary = `Risk: ${r} | Safeguard: ${s} | Changing Evidence: ${e}`;
-      }
+      eventsEncountered.push({ eventId, responseSummary: "Event reviewed and incorporated into decision trail." });
+      const modal = document.getElementById("evidence-modal");
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
 
-      eventsEncountered.push({ eventId, responseSummary });
-      document.getElementById("evidence-modal").classList.remove("active");
+      const totalRounds = gameMode === 'quick' ? 2 : 4;
 
-      // Trigger subsequent events if queued for round 3
-      if (currentRoundIndex === 2 && eventId === 'event-1') {
-        currentRoundIndex++;
-        renderRound();
-      } else if (eventId === 'event-2' && !eventsEncountered.some(e => e.eventId === 'event-3')) {
-        showEventModal(EVENTS.find(e => e.id === 'event-3'));
-      } else if (eventId === 'event-3' && !eventsEncountered.some(e => e.eventId === 'event-4')) {
-        showEventModal(EVENTS.find(e => e.id === 'event-4'));
-      } else if (currentRoundIndex < 3) {
+      if (gameMode === 'full' && eventId === 'event-2' && !eventsEncountered.some(e => e.eventId === 'event-3')) {
+        showEventModal(EVENTS_DATA.find(e => e.id === 'event-3'));
+      } else if (currentRoundIndex < totalRounds - 1) {
         currentRoundIndex++;
         renderRound();
       } else {
@@ -1726,22 +1785,12 @@
 
     function updateHistory() {
       const container = document.getElementById("history-container");
-      container.innerHTML = "";
-
-      if (playedCards.length === 0) {
-        container.innerHTML = '<div style="font-size: 0.85rem; color: var(--text-muted); font-style: italic;">No cards played yet.</div>';
-        return;
-      }
-
-      playedCards.forEach(p => {
-        const item = document.createElement("div");
-        item.className = "history-item";
-        item.innerHTML = `
+      container.innerHTML = playedCards.map(p => `
+        <div class="history-item">
           <div class="history-round">Round ${p.round}</div>
           <div class="history-card-name">${p.card.title}</div>
-        `;
-        container.appendChild(item);
-      });
+        </div>
+      `).join('');
     }
 
     function renderFinalForm() {
@@ -1751,7 +1800,6 @@
       USE_CASES.forEach((uc, idx) => {
         const cardEl = document.createElement("div");
         cardEl.className = "final-use-case-card";
-
         const currentDec = finalDecisionsData[idx].decision;
 
         cardEl.innerHTML = `
@@ -1764,16 +1812,16 @@
 
           <div style="margin-bottom:1.25rem;">
             <label style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.5rem;">A. Deployment Decision:</label>
-            <div class="decision-options" id="final-dec-btns-${idx}">
-              <button class="opt-btn ${currentDec === 'Launch' ? 'active-launch' : ''}" onclick="setFinalDecision(${idx}, 'Launch')">Launch</button>
-              <button class="opt-btn ${currentDec === 'Limited Launch' ? 'active-limited' : ''}" onclick="setFinalDecision(${idx}, 'Limited Launch')">Limited Launch</button>
-              <button class="opt-btn ${currentDec === 'Pause' ? 'active-pause' : ''}" onclick="setFinalDecision(${idx}, 'Pause')">Pause</button>
+            <div class="decision-options">
+              <button type="button" class="opt-btn ${currentDec === 'Launch' ? 'active-launch' : ''}" onclick="setFinalDecision(${idx}, 'Launch')">Launch</button>
+              <button type="button" class="opt-btn ${currentDec === 'Limited Launch' ? 'active-limited' : ''}" onclick="setFinalDecision(${idx}, 'Limited Launch')">Limited Launch</button>
+              <button type="button" class="opt-btn ${currentDec === 'Pause' ? 'active-pause' : ''}" onclick="setFinalDecision(${idx}, 'Pause')">Pause</button>
             </div>
           </div>
 
           <div style="margin-bottom:1.25rem;">
             <label style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.5rem;">B. Required Safeguards (Select all that apply):</label>
-            <div class="safeguards-grid" id="safeguards-grid-${idx}">
+            <div class="safeguards-grid">
               ${SAFEGUARD_OPTIONS.map(sg => `
                 <label class="checkbox-label">
                   <input type="checkbox" value="${sg}" ${finalDecisionsData[idx].safeguards.includes(sg) ? 'checked' : ''} onchange="toggleSafeguard(${idx}, '${sg}')">
@@ -1783,9 +1831,25 @@
             </div>
           </div>
 
-          <div>
-            <label style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.5rem;">C. "What would change your team's mind?" (Required):</label>
-            <input type="text" class="final-input" id="mind-changer-${idx}" value="${finalDecisionsData[idx].mindChanger}" placeholder="e.g., A substantially higher error rate for an untested subgroup..." oninput="finalDecisionsData[${idx}].mindChanger = this.value" />
+          <div style="margin-bottom:1.25rem;">
+            <label for="evidence-citing-${idx}" style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.3rem;">C. Cite at Least 2 Specific Pieces of Evidence (Required):</label>
+            <textarea class="final-input" id="evidence-citing-${idx}" placeholder="e.g., Cited Card 2 disaggregated 6.2% false match rate for Group D and Card 4 student consent concerns...">${finalDecisionsData[idx].evidenceCiting}</textarea>
+          </div>
+
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:1rem;">
+            <div>
+              <label for="mind-changer-${idx}" style="font-weight:700; font-size:0.9rem; display:block; margin-bottom:0.3rem;">D. What Would Change Your Mind? (Required):</label>
+              <input type="text" class="final-input" id="mind-changer-${idx}" value="${finalDecisionsData[idx].mindChanger}" placeholder="e.g., Subgroup error gap dropping below 1.5%..." />
+            </div>
+            <div>
+              <label for="uncertainty-${idx}" style="font-weight:700; font-size:0.9rem; display:block; margin-bottom:0.3rem;">E. Remaining Uncertainty (Required):</label>
+              <input type="text" class="final-input" id="uncertainty-${idx}" value="${finalDecisionsData[idx].uncertainty}" placeholder="e.g., Performance under low-light or with face masks..." />
+            </div>
+          </div>
+
+          <div style="margin-top:1rem;">
+            <label for="monitoring-${idx}" style="font-weight:700; font-size:0.9rem; display:block; margin-bottom:0.3rem;">F. Proposed Monitoring Plan (Required):</label>
+            <input type="text" class="final-input" id="monitoring-${idx}" value="${finalDecisionsData[idx].monitoring}" placeholder="e.g., Monthly independent audit of false access denial logs..." />
           </div>
         `;
 
@@ -1809,7 +1873,7 @@
 
     function showFinalSheet() {
       showScreen("screen-final");
-      updateProgressBar(5);
+      updateProgressBar(3);
 
       const summaryContainer = document.getElementById("final-played-cards-summary");
       summaryContainer.innerHTML = playedCards.map(p => `
@@ -1822,14 +1886,34 @@
     }
 
     function submitFinalDecisions() {
-      // Validate "What would change your mind?" fields
-      for (let i = 0; i < 3; i++) {
-        const val = document.getElementById(`mind-changer-${i}`)?.value || '';
-        if (!val.trim()) {
-          alert(`Please specify "What would change your mind?" for ${USE_CASES[i].name} before submitting.`);
-          return;
-        }
-        finalDecisionsData[i].mindChanger = val;
+      const errBanner = document.getElementById("validation-error-banner");
+      errBanner.style.display = "none";
+      errBanner.innerText = "";
+
+      let missing = [];
+
+      USE_CASES.forEach((uc, i) => {
+        const ev = document.getElementById(`evidence-citing-${i}`)?.value.trim() || '';
+        const mc = document.getElementById(`mind-changer-${i}`)?.value.trim() || '';
+        const un = document.getElementById(`uncertainty-${i}`)?.value.trim() || '';
+        const mn = document.getElementById(`monitoring-${i}`)?.value.trim() || '';
+
+        finalDecisionsData[i].evidenceCiting = ev;
+        finalDecisionsData[i].mindChanger = mc;
+        finalDecisionsData[i].uncertainty = un;
+        finalDecisionsData[i].monitoring = mn;
+
+        if (!ev) missing.push(`${uc.name}: Cites evidence`);
+        if (!mc) missing.push(`${uc.name}: What would change your mind`);
+        if (!un) missing.push(`${uc.name}: Remaining uncertainty`);
+        if (!mn) missing.push(`${uc.name}: Monitoring plan`);
+      });
+
+      if (missing.length > 0) {
+        errBanner.innerText = `⚠️ Please complete all required reasoning fields before proceeding:\n• ${missing.join('\n• ')}`;
+        errBanner.style.display = "block";
+        errBanner.scrollIntoView({ behavior: 'smooth' });
+        return;
       }
 
       showRationaleScreen();
@@ -1837,59 +1921,69 @@
 
     function showRationaleScreen() {
       showScreen("screen-rationale");
-      updateProgressBar(6);
+      updateProgressBar(4);
 
-      // Render Rationale Summary
+      const roleObj = ROLES_DATA.find(r => r.id === selectedRoleId);
+
       const summaryList = document.getElementById("rationale-summary-list");
       summaryList.innerHTML = USE_CASES.map((uc, i) => `
         <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:8px; padding:1.25rem; margin-bottom:1rem;">
           <h4 style="font-family:'Lora',serif; font-size:1.1rem; margin-bottom:0.4rem;">${uc.name}</h4>
-          <p style="font-size:0.95rem; margin-bottom:0.3rem;"><strong>Decision:</strong> <span class="risk-badge ${finalDecisionsData[i].decision === 'Launch' ? 'risk-low' : finalDecisionsData[i].decision === 'Limited Launch' ? 'risk-medium' : 'risk-high'}">${finalDecisionsData[i].decision}</span></p>
-          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Required Safeguards:</strong> ${finalDecisionsData[i].safeguards.length ? finalDecisionsData[i].safeguards.join(', ') : 'None specified'}</p>
-          <p style="font-size:0.9rem; color:var(--text-muted);"><strong>What Would Change Our Mind:</strong> <em>"${finalDecisionsData[i].mindChanger}"</em></p>
+          <p style="font-size:0.9rem; margin-bottom:0.3rem;"><strong>Decision Lens:</strong> ${roleObj ? roleObj.title : 'General'}</p>
+          <p style="font-size:0.95rem; margin-bottom:0.3rem;"><strong>Deployment Stance:</strong> <span class="risk-badge ${finalDecisionsData[i].decision === 'Launch' ? 'risk-low' : finalDecisionsData[i].decision === 'Limited Launch' ? 'risk-medium' : 'risk-high'}">${finalDecisionsData[i].decision}</span></p>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Required Safeguards:</strong> ${finalDecisionsData[i].safeguards.length ? finalDecisionsData[i].safeguards.join(', ') : 'None'}</p>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>Cited Evidence:</strong> <em>"${finalDecisionsData[i].evidenceCiting}"</em></p>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.3rem;"><strong>What Would Change Our Mind:</strong> <em>"${finalDecisionsData[i].mindChanger}"</em></p>
+          <p style="font-size:0.9rem; color:var(--text-muted);"><strong>Monitoring & Uncertainty:</strong> <em>${finalDecisionsData[i].monitoring} (Uncertainty: ${finalDecisionsData[i].uncertainty})</em></p>
         </div>
-      `).join("");
+      `).join('');
 
-      // Render Evidence Trail
       const trailList = document.getElementById("evidence-trail-list");
-      trailList.innerHTML = "";
-
-      playedCards.forEach(p => {
-        const el = document.createElement("div");
-        el.className = "trail-item";
-        el.innerHTML = `
+      trailList.innerHTML = playedCards.map(p => `
+        <div class="trail-item">
           <div class="trail-round">Round ${p.round} Investigation</div>
           <div class="trail-title">Card 0${p.card.id}: ${p.card.title}</div>
           <div style="font-size:0.9rem; color:var(--text-muted);">${p.card.desc}</div>
-        `;
-        trailList.appendChild(el);
-      });
+        </div>
+      `).join('');
 
-      if (eventsEncountered.length > 0) {
-        eventsEncountered.forEach(e => {
-          const evObj = EVENTS.find(ev => ev.id === e.eventId);
-          const el = document.createElement("div");
-          el.className = "trail-item";
-          el.style.borderLeftColor = "var(--accent-rose)";
+      // Uninvestigated Cards
+      const playedIds = playedCards.map(p => p.card.id);
+      const uninvestigated = CARDS_DATA.filter(c => !playedIds.includes(c.id));
+      const unList = document.getElementById("uninvestigated-cards-list");
+      unList.innerHTML = uninvestigated.map(c => `<li><strong>Card 0${c.id} (${c.title}):</strong> ${c.desc}</li>`).join('');
+    }
+
+    function showClassroomComparisonScreen() {
+      showScreen("screen-comparison");
+      updateProgressBar(5);
+
+      USE_CASES.forEach((uc, i) => {
+        const el = document.getElementById(`comp-uc${i+1}-summary`);
+        if (el) {
           el.innerHTML = `
-            <div class="trail-round" style="color:var(--accent-rose);">Breaking Event Encountered</div>
-            <div class="trail-title">${evObj ? evObj.title : 'Breaking Event'}</div>
-            <div style="font-size:0.9rem; color:var(--text-muted);"><strong>Team Action/Response:</strong> ${e.responseSummary}</div>
+            <strong>Your Team Decision:</strong> ${finalDecisionsData[i].decision}<br>
+            <strong>Safeguards:</strong> ${finalDecisionsData[i].safeguards.join(', ') || 'None'}<br>
+            <strong>Cited Evidence:</strong> "${finalDecisionsData[i].evidenceCiting}"
           `;
-          trailList.appendChild(el);
-        });
-      }
+        }
+      });
     }
 
     function showDebriefScreen() {
-      // Save reflection why text
-      reflectionData.why = document.getElementById("reflection-why-input")?.value || "";
       showScreen("screen-debrief");
-      updateProgressBar(7);
+      updateProgressBar(6);
     }
 
     function toggleFacilitatorGuide() {
-      document.getElementById("guide-modal").classList.toggle("active");
+      const modal = document.getElementById("guide-modal");
+      if (modal.classList.contains("active")) {
+        modal.classList.remove("active");
+        modal.setAttribute("aria-hidden", "true");
+      } else {
+        modal.classList.add("active");
+        modal.removeAttribute("aria-hidden");
+      }
     }
 
     function restartGame() {
@@ -1898,15 +1992,14 @@
       playedCards = [];
       eventsEncountered = [];
       finalDecisionsData = [
-        { decision: "Launch", safeguards: ["Human review"], mindChanger: "" },
-        { decision: "Limited Launch", safeguards: ["Human review", "Appeal process"], mindChanger: "" },
-        { decision: "Pause", safeguards: ["Independent audit"], mindChanger: "" }
+        { decision: "Launch", safeguards: ["Human review"], evidenceCiting: "", mindChanger: "", uncertainty: "", monitoring: "" },
+        { decision: "Limited Launch", safeguards: ["Human review", "Appeal process"], evidenceCiting: "", mindChanger: "", uncertainty: "", monitoring: "" },
+        { decision: "Pause", safeguards: ["Independent audit"], evidenceCiting: "", mindChanger: "", uncertainty: "", monitoring: "" }
       ];
-      reflectionData = { choice: "Yes — our decision changed.", why: "" };
 
       updateHistory();
+      renderRoles();
       renderCards();
-      renderFinalForm();
       showScreen("screen-welcome");
       updateProgressBar(1);
     }
