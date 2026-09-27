@@ -54,7 +54,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
 
     .logo-area {
@@ -222,7 +222,7 @@
       border-radius: 8px;
       padding: 1.75rem;
       text-align: left;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
 
     .info-card-icon {
@@ -325,7 +325,7 @@
       align-items: center;
       gap: 1.5rem;
       transition: border-color 0.2s;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     }
 
     .use-case-card:hover {
@@ -432,7 +432,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
     }
 
     .decision-card:hover:not(.disabled):not(.played) {
@@ -515,7 +515,7 @@
       border-radius: 10px;
       padding: 1.5rem;
       height: fit-content;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
     }
 
     .history-list {
@@ -618,7 +618,7 @@
       border-radius: 8px;
       padding: 1.5rem;
       margin-bottom: 1.5rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     }
 
     .final-form-group label {
@@ -666,7 +666,7 @@
       border-radius: 10px;
       padding: 1.75rem;
       position: relative;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
     }
 
     .debrief-card-header {
@@ -773,29 +773,33 @@
       <div class="hero">
         <span class="hero-tag">ALGORITHMIC FAIRNESS CASE STUDY</span>
         <h1>Campus FacePass Decision Activity</h1>
-        <p>A 10–15 minute board-game style discussion exercise exploring trade-offs in accuracy, intersectional auditing, transparency, stakeholder input, and risk-based deployment.</p>
-        <button class="btn btn-primary" style="font-size: 1.1rem; padding: 0.8rem 2.2rem;" onclick="startGame()">Start Decision Activity →</button>
+        <p>A 10–15 minute board-game style discussion exercise exploring trade-offs in accuracy, intersectional
+          auditing, transparency, stakeholder input, and risk-based deployment.</p>
+        <button class="btn btn-primary" style="font-size: 1.1rem; padding: 0.8rem 2.2rem;" onclick="startGame()">Start
+          Decision Activity →</button>
       </div>
 
       <div class="info-cards-grid">
         <div class="info-card">
           <div class="info-card-icon">🏢</div>
           <h3>The Fictional Scenario</h3>
-          <p>The university is preparing to launch <strong>Campus FacePass</strong>—a facial recognition system allowing cardless access for students, staff, and faculty. Vendor claims <strong>98% overall accuracy</strong>.</p>
+          <p>The university is preparing to launch <strong>Campus FacePass</strong>—a facial recognition system allowing
+            cardless access for students, staff, and faculty. Vendor claims <strong>98% overall accuracy</strong>.</p>
         </div>
 
         <div class="info-card">
           <div class="info-card-icon">🎯</div>
           <h3>Three Targeted Use Cases</h3>
           <p>1. <strong>Library & Gym:</strong> Low-risk convenience.<br>
-             2. <strong>Dorm & Lab:</strong> Medium/high-risk access.<br>
-             3. <strong>Campus Police ID:</strong> High-risk enforcement.</p>
+            2. <strong>Dorm & Lab:</strong> Medium/high-risk access.<br>
+            3. <strong>Campus Police ID:</strong> High-risk enforcement.</p>
         </div>
 
         <div class="info-card">
           <div class="info-card-icon">🃏</div>
           <h3>6 Single-Use Cards</h3>
-          <p>Teams get 6 decision cards. Each can be played <strong>only once</strong>, forcing strategic trade-offs across 4 decision rounds.</p>
+          <p>Teams get 6 decision cards. Each can be played <strong>only once</strong>, forcing strategic trade-offs
+            across 4 decision rounds.</p>
         </div>
       </div>
     </div>
@@ -806,7 +810,8 @@
       <div class="round-header">
         <span class="round-badge" id="round-number-badge">Round 1 of 4</span>
         <h2 class="round-title" id="round-title-text">Round 1 — Pre-launch Testing</h2>
-        <p class="round-prompt" id="round-prompt-text">The vendor says Campus FacePass is ready. What do you check first?</p>
+        <p class="round-prompt" id="round-prompt-text">The vendor says Campus FacePass is ready. What do you check
+          first?</p>
       </div>
 
       <div class="game-grid">
@@ -816,7 +821,8 @@
           <div class="cards-section">
             <div class="section-title">
               <span>🃏 Your Decision Cards Hand</span>
-              <span style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);">(Select ONE card to play for this round)</span>
+              <span style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);">(Select ONE card to play
+                for this round)</span>
             </div>
             <div class="cards-grid" id="cards-container">
               <!-- Rendered dynamically -->
@@ -824,7 +830,8 @@
           </div>
 
           <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
-            <button class="btn btn-primary" id="play-card-btn" disabled onclick="confirmPlayCard()">Play Selected Card →</button>
+            <button class="btn btn-primary" id="play-card-btn" disabled onclick="confirmPlayCard()">Play Selected Card
+              →</button>
           </div>
         </div>
 
@@ -832,7 +839,8 @@
         <div class="sidebar-column">
           <div class="sidebar-panel">
             <h3 class="section-title">📜 Cards Played Log</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">Cards played in past rounds are permanently spent.</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Cards played in past rounds are permanently spent.
+            </p>
             <div class="history-list" id="history-container">
               <div style="font-size: 0.85rem; color: var(--text-muted); font-style: italic;">No cards played yet.</div>
             </div>
@@ -845,12 +853,15 @@
     <div id="screen-final" class="screen">
       <div style="text-align: center; margin-bottom: 2rem;">
         <span class="hero-tag">FINAL ROUND</span>
-        <h2 style="font-family: 'Cinzel', 'Palatino', serif; font-size: 2.2rem; font-weight: 700;">Campus FacePass Final Decision Sheet</h2>
-        <p style="color: var(--text-muted);">No new cards can be played. Make your final deployment decision for each use case and justify it using the cards you played.</p>
+        <h2 style="font-family: 'Cinzel', 'Palatino', serif; font-size: 2.2rem; font-weight: 700;">Campus FacePass Final
+          Decision Sheet</h2>
+        <p style="color: var(--text-muted);">No new cards can be played. Make your final deployment decision for each
+          use case and justify it using the cards you played.</p>
       </div>
 
       <div class="summary-box" style="margin-bottom: 2rem;">
-        <h4 style="font-family: 'Cinzel', 'Palatino', serif; color: var(--accent-indigo); margin-bottom: 0.5rem;">🃏 Cards Your Team Played During the Game:</h4>
+        <h4 style="font-family: 'Cinzel', 'Palatino', serif; color: var(--accent-indigo); margin-bottom: 0.5rem;">🃏
+          Cards Your Team Played During the Game:</h4>
         <div id="final-played-cards-summary" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
       </div>
 
@@ -869,7 +880,8 @@
             </div>
           </div>
           <div>
-            <input type="text" class="final-input" id="just-1" placeholder="One-sentence justification for Library & Gym decision..." />
+            <input type="text" class="final-input" id="just-1"
+              placeholder="One-sentence justification for Library & Gym decision..." />
           </div>
         </div>
 
@@ -887,7 +899,8 @@
             </div>
           </div>
           <div>
-            <input type="text" class="final-input" id="just-2" placeholder="One-sentence justification for Dorm & Lab decision..." />
+            <input type="text" class="final-input" id="just-2"
+              placeholder="One-sentence justification for Dorm & Lab decision..." />
           </div>
         </div>
 
@@ -905,21 +918,26 @@
             </div>
           </div>
           <div>
-            <input type="text" class="final-input" id="just-3" placeholder="One-sentence justification for Campus Police decision..." />
+            <input type="text" class="final-input" id="just-3"
+              placeholder="One-sentence justification for Campus Police decision..." />
           </div>
         </div>
       </div>
 
       <div class="final-form-group">
         <label>Three things we would audit before full launch:</label>
-        <input type="text" class="final-input" id="audit-1" placeholder="1. e.g., Non-binary & trans representation" style="margin-bottom: 0.5rem;" />
-        <input type="text" class="final-input" id="audit-2" placeholder="2. e.g., Low lighting & camera hardware variations" style="margin-bottom: 0.5rem;" />
-        <input type="text" class="final-input" id="audit-3" placeholder="3. e.g., Intersectional error rates (darker-skinned females)" />
+        <input type="text" class="final-input" id="audit-1" placeholder="1. e.g., Non-binary & trans representation"
+          style="margin-bottom: 0.5rem;" />
+        <input type="text" class="final-input" id="audit-2"
+          placeholder="2. e.g., Low lighting & camera hardware variations" style="margin-bottom: 0.5rem;" />
+        <input type="text" class="final-input" id="audit-3"
+          placeholder="3. e.g., Intersectional error rates (darker-skinned females)" />
       </div>
 
       <div class="final-form-group">
         <label>One fairness concern that remains even after better accuracy:</label>
-        <textarea class="final-input" id="remaining-concern" placeholder="e.g., Constant surveillance, lack of meaningful consent, or irreversible police misidentification..."></textarea>
+        <textarea class="final-input" id="remaining-concern"
+          placeholder="e.g., Constant surveillance, lack of meaningful consent, or irreversible police misidentification..."></textarea>
       </div>
 
       <div style="display: flex; gap: 1rem; justify-content: flex-end;">
@@ -932,8 +950,10 @@
     <div id="screen-debrief" class="screen">
       <div style="text-align: center; margin-bottom: 2rem;">
         <span class="hero-tag">ACTIVITY DEBRIEF</span>
-        <h2 style="font-family: 'Cinzel', 'Palatino', serif; font-size: 2.2rem; font-weight: 700;">Fairness Concepts & Case Study Connection</h2>
-        <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto;">See how the decision cards played during the activity map to key organizational justice and algorithmic fairness concepts (Gender Shades study).</p>
+        <h2 style="font-family: 'Cinzel', 'Palatino', serif; font-size: 2.2rem; font-weight: 700;">Fairness Concepts &
+          Case Study Connection</h2>
+        <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto;">See how the decision cards played during
+          the activity map to key organizational justice and algorithmic fairness concepts (Gender Shades study).</p>
       </div>
 
       <div class="debrief-grid">
@@ -941,9 +961,12 @@
           <div class="debrief-card-header">
             <span class="fairness-badge distributive">Distributive Fairness</span>
           </div>
-          <h3 style="font-family: 'Cinzel', 'Palatino', serif; margin-bottom: 0.5rem;">Error Distribution & Intersectionality</h3>
-          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on whether outcomes, accuracy, and error rates are evenly distributed across demographic subgroups.</p>
-          <div style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
+          <h3 style="font-family: 'Cinzel', 'Palatino', serif; margin-bottom: 0.5rem;">Error Distribution &
+            Intersectionality</h3>
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on whether outcomes,
+            accuracy, and error rates are evenly distributed across demographic subgroups.</p>
+          <div
+            style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
             <strong>Cards mapped:</strong><br>
             • Intersectional Audit<br>
             • Expand Categories<br>
@@ -955,9 +978,12 @@
           <div class="debrief-card-header">
             <span class="fairness-badge procedural">Procedural Fairness</span>
           </div>
-          <h3 style="font-family: 'Cinzel', 'Palatino', serif; margin-bottom: 0.5rem;">Transparency, Governance & Appeals</h3>
-          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on whether decisions are made through consistent, transparent, and challengeable processes.</p>
-          <div style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
+          <h3 style="font-family: 'Cinzel', 'Palatino', serif; margin-bottom: 0.5rem;">Transparency, Governance &
+            Appeals</h3>
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on whether decisions are
+            made through consistent, transparent, and challengeable processes.</p>
+          <div
+            style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
             <strong>Cards mapped:</strong><br>
             • Transparency & Appeal<br>
             • Risk-Based Use Limit
@@ -968,21 +994,29 @@
           <div class="debrief-card-header">
             <span class="fairness-badge interpersonal">Interpersonal / Informational</span>
           </div>
-          <h3 style="font-family: 'Cinzel', 'Palatino', serif; margin-bottom: 0.5rem;">Stakeholder Consent & Dignity</h3>
-          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on how individuals are treated with respect, informed of surveillance, and given agency.</p>
-          <div style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
+          <h3 style="font-family: 'Cinzel', 'Palatino', serif; margin-bottom: 0.5rem;">Stakeholder Consent & Dignity
+          </h3>
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on how individuals are
+            treated with respect, informed of surveillance, and given agency.</p>
+          <div
+            style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
             <strong>Cards mapped:</strong><br>
             • Stakeholder Feedback
           </div>
         </div>
       </div>
 
-      <div style="margin-top: 3rem; background: var(--bg-card); border: 1px solid var(--border-color); border-left: 5px solid var(--accent-indigo); border-radius: 10px; padding: 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.04);">
-        <h3 style="font-family: 'Cinzel', 'Palatino', serif; color: var(--accent-indigo); margin-bottom: 1rem;">💡 Gender Shades & Real-World Case Study Connections</h3>
+      <div
+        style="margin-top: 3rem; background: var(--bg-card); border: 1px solid var(--border-color); border-left: 5px solid var(--accent-indigo); border-radius: 10px; padding: 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.04);">
+        <h3 style="font-family: 'Cinzel', 'Palatino', serif; color: var(--accent-indigo); margin-bottom: 1rem;">💡
+          Gender Shades & Real-World Case Study Connections</h3>
         <ul style="color: var(--text-muted); line-height: 1.8; padding-left: 1.5rem;">
-          <li><strong>Overall Accuracy Illusion:</strong> A model can be 98% accurate overall while failing catastrophically on specific subgroups (e.g., darker-skinned females).</li>
-          <li><strong>Limits of Binary & Skin Tone Partitions:</strong> Binary gender classification ignores non-binary and trans individuals. Fitzpatrick skin-typing can erase nuances within darker skin tones.</li>
-          <li><strong>High-Risk vs Low-Risk Deployments:</strong> Improving error gaps does not eliminate systemic harms like surveillance, coercion, and police misidentification.</li>
+          <li><strong>Overall Accuracy Illusion:</strong> A model can be 98% accurate overall while failing
+            catastrophically on specific subgroups (e.g., darker-skinned females).</li>
+          <li><strong>Limits of Binary & Skin Tone Partitions:</strong> Binary gender classification ignores non-binary
+            and trans individuals. Fitzpatrick skin-typing can erase nuances within darker skin tones.</li>
+          <li><strong>High-Risk vs Low-Risk Deployments:</strong> Improving error gaps does not eliminate systemic harms
+            like surveillance, coercion, and police misidentification.</li>
         </ul>
       </div>
 
@@ -999,7 +1033,8 @@
       <div class="modal-icon">🚨</div>
       <h2 class="modal-title">BREAKING UPDATE!</h2>
       <p class="modal-body">
-        The vendor announces a major model update. Error gaps across male/female and lighter/darker groups are now <strong>much smaller</strong>.<br><br>
+        The vendor announces a major model update. Error gaps across male/female and lighter/darker groups are now
+        <strong>much smaller</strong>.<br><br>
         <em>Are the fairness concerns fully solved?</em> Play your final card in Round 4 to take a stand.
       </p>
       <button class="btn btn-primary" onclick="closeBreakingModal()">Proceed to Round 4 →</button>
@@ -1010,15 +1045,22 @@
   <div class="modal-overlay" id="guide-modal">
     <div class="modal-card" style="max-width: 800px; text-align: left; border-color: var(--accent-blue);">
       <h2 class="modal-title" style="color: var(--accent-blue);">📘 Facilitator Guide: Case Study Mapping</h2>
-      <div style="max-height: 400px; overflow-y: auto; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+      <div
+        style="max-height: 400px; overflow-y: auto; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
         <p style="margin-bottom: 1rem;"><strong>How the Game Surfaces Key Discussion Questions:</strong></p>
         <ul style="padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.75rem;">
-          <li><strong>Would we have discovered the problem?</strong> Round 1 shows whether teams rely on overall accuracy or ask for deeper auditing early.</li>
-          <li><strong>Which population partitions should be checked?</strong> Intersectional Audit and Expand Categories push teams to consider race, gender, skin tone, age, disability, presentation, and camera conditions.</li>
-          <li><strong>Is binary gender fair?</strong> Round 2 raises the problem of male/female-only evaluation and exclusion of trans/non-binary users.</li>
-          <li><strong>What is gained or lost by broad grouping?</strong> Discussion on lighter/darker skin-tone framing vs statistical power vs lost nuance.</li>
-          <li><strong>If companies improve error gaps, is fairness solved?</strong> Round 4 breaking update forces teams to ask if accuracy solves surveillance, consent, or police harm.</li>
-          <li><strong>Is law enforcement use fair?</strong> Campus Police use case asks whether some deployments remain unacceptable regardless of accuracy.</li>
+          <li><strong>Would we have discovered the problem?</strong> Round 1 shows whether teams rely on overall
+            accuracy or ask for deeper auditing early.</li>
+          <li><strong>Which population partitions should be checked?</strong> Intersectional Audit and Expand Categories
+            push teams to consider race, gender, skin tone, age, disability, presentation, and camera conditions.</li>
+          <li><strong>Is binary gender fair?</strong> Round 2 raises the problem of male/female-only evaluation and
+            exclusion of trans/non-binary users.</li>
+          <li><strong>What is gained or lost by broad grouping?</strong> Discussion on lighter/darker skin-tone framing
+            vs statistical power vs lost nuance.</li>
+          <li><strong>If companies improve error gaps, is fairness solved?</strong> Round 4 breaking update forces teams
+            to ask if accuracy solves surveillance, consent, or police harm.</li>
+          <li><strong>Is law enforcement use fair?</strong> Campus Police use case asks whether some deployments remain
+            unacceptable regardless of accuracy.</li>
         </ul>
       </div>
       <div style="display: flex; justify-content: flex-end;">
