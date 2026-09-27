@@ -1004,35 +1004,10 @@
           transparency, stakeholder input, and risk-based deployment.</p>
       </div>
 
-      <!-- Mode Selector -->
-      <div class="mode-select-box">
-        <h3 style="font-family:'Lora',serif; margin-bottom:0.3rem;">1. Select Session Mode</h3>
-        <p style="font-size:0.9rem; color:var(--text-muted);">Choose the activity format suited to your class schedule.
-        </p>
-        <div class="mode-grid">
-          <div class="mode-card selected" id="mode-full" onclick="selectMode('full')" tabindex="0" role="radio"
-            aria-checked="true">
-            <span class="mode-time">⏱️ 25–35 MINS</span>
-            <h4>Full Discussion Mode</h4>
-            <p style="font-size:0.88rem; color:var(--text-muted);">4 investigation rounds, multiple breaking events,
-              complete evidence trail analysis, and full debrief.</p>
-          </div>
-          <div class="mode-card" id="mode-quick" onclick="selectMode('quick')" tabindex="0" role="radio"
-            aria-checked="false">
-            <span class="mode-time">⏱️ 10–15 MINS</span>
-            <h4>Quick Mode</h4>
-            <p style="font-size:0.88rem; color:var(--text-muted);">2 investigation rounds, 1 breaking event, final
-              deployment decisions, and streamlined debrief.</p>
-          </div>
-        </div>
-      </div>
-
       <!-- Stakeholder Role Assignment -->
       <div class="role-select-box">
-        <h3 style="font-family:'Lora',serif; margin-bottom:0.3rem;">2. Assign Participant / Team Perspective (Optional)
-        </h3>
-        <p style="font-size:0.9rem; color:var(--text-muted);">Assigning specific stakeholder lenses encourages
-          multi-faceted discussion without dictating a single correct outcome.</p>
+        <h3 style="font-family:'Lora',serif; margin-bottom:0.3rem;">Select Participant / Team Perspective (Optional)</h3>
+        <p style="font-size:0.9rem; color:var(--text-muted);">Assigning specific stakeholder lenses encourages multi-faceted discussion without dictating a single correct outcome.</p>
         <div class="role-grid" id="roles-container">
           <!-- Rendered dynamically -->
         </div>
@@ -1709,14 +1684,6 @@
       renderRoles();
     };
 
-    function selectMode(mode) {
-      gameMode = mode;
-      document.getElementById("mode-full").className = `mode-card ${mode === 'full' ? 'selected' : ''}`;
-      document.getElementById("mode-full").setAttribute("aria-checked", mode === 'full');
-      document.getElementById("mode-quick").className = `mode-card ${mode === 'quick' ? 'selected' : ''}`;
-      document.getElementById("mode-quick").setAttribute("aria-checked", mode === 'quick');
-    }
-
     function renderRoles() {
       const container = document.getElementById("roles-container");
       container.innerHTML = ROLES_DATA.map(r => `
@@ -1767,8 +1734,8 @@
     }
 
     function renderRound() {
-      const totalRounds = gameMode === 'quick' ? 2 : 4;
-      document.getElementById("round-number-badge").innerText = `Round ${currentRoundIndex + 1} of ${totalRounds} (${gameMode === 'quick' ? 'Quick Mode' : 'Full Mode'})`;
+      const totalRounds = 4;
+      document.getElementById("round-number-badge").innerText = `Round ${currentRoundIndex + 1} of ${totalRounds}`;
 
       const prompts = [
         "The vendor claims 98% accuracy. What investigation card will your team play first?",
@@ -1862,21 +1829,16 @@
       modal.classList.remove("active");
       modal.setAttribute("aria-hidden", "true");
 
-      const totalRounds = gameMode === 'quick' ? 2 : 4;
+      const totalRounds = 4;
       const currentRoundNum = currentRoundIndex + 1;
 
       // Event Triggers
-      if (gameMode === 'quick' && currentRoundNum === 1 && !eventsEncountered.some(e => e.eventId === 'event-1')) {
+      if (currentRoundNum === 2 && !eventsEncountered.some(e => e.eventId === 'event-1')) {
         showEventModal(EVENTS_DATA.find(e => e.id === 'event-1'));
         return;
       }
 
-      if (gameMode === 'full' && currentRoundNum === 2 && !eventsEncountered.some(e => e.eventId === 'event-1')) {
-        showEventModal(EVENTS_DATA.find(e => e.id === 'event-1'));
-        return;
-      }
-
-      if (gameMode === 'full' && currentRoundNum === 3 && !eventsEncountered.some(e => e.eventId === 'event-2')) {
+      if (currentRoundNum === 3 && !eventsEncountered.some(e => e.eventId === 'event-2')) {
         showEventModal(EVENTS_DATA.find(e => e.id === 'event-2'));
         return;
       }
@@ -1915,9 +1877,9 @@
       modal.classList.remove("active");
       modal.setAttribute("aria-hidden", "true");
 
-      const totalRounds = gameMode === 'quick' ? 2 : 4;
+      const totalRounds = 4;
 
-      if (gameMode === 'full' && eventId === 'event-2' && !eventsEncountered.some(e => e.eventId === 'event-3')) {
+      if (eventId === 'event-2' && !eventsEncountered.some(e => e.eventId === 'event-3')) {
         showEventModal(EVENTS_DATA.find(e => e.id === 'event-3'));
       } else if (currentRoundIndex < totalRounds - 1) {
         currentRoundIndex++;
