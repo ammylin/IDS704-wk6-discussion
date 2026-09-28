@@ -1941,23 +1941,23 @@
           </div>
 
           <div style="margin-bottom:1.25rem;">
-            <label for="evidence-citing-${idx}" style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.3rem;">C. Cite at Least 2 Specific Pieces of Evidence (Required):</label>
+            <label for="evidence-citing-${idx}" style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.3rem;">C. Cite Specific Evidence (Optional):</label>
             <textarea class="final-input" id="evidence-citing-${idx}" placeholder="e.g., Cited Card 2 disaggregated 6.2% false match rate for Group D and Card 4 student consent concerns...">${finalDecisionsData[idx].evidenceCiting}</textarea>
           </div>
 
           <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:1rem;">
             <div>
-              <label for="mind-changer-${idx}" style="font-weight:700; font-size:0.9rem; display:block; margin-bottom:0.3rem;">D. What Would Change Your Mind? (Required):</label>
+              <label for="mind-changer-${idx}" style="font-weight:700; font-size:0.9rem; display:block; margin-bottom:0.3rem;">D. What Would Change Your Mind? (Optional):</label>
               <input type="text" class="final-input" id="mind-changer-${idx}" value="${finalDecisionsData[idx].mindChanger}" placeholder="e.g., Subgroup error gap dropping below 1.5%..." />
             </div>
             <div>
-              <label for="uncertainty-${idx}" style="font-weight:700; font-size:0.9rem; display:block; margin-bottom:0.3rem;">E. Remaining Uncertainty (Required):</label>
+              <label for="uncertainty-${idx}" style="font-weight:700; font-size:0.9rem; display:block; margin-bottom:0.3rem;">E. Remaining Uncertainty (Optional):</label>
               <input type="text" class="final-input" id="uncertainty-${idx}" value="${finalDecisionsData[idx].uncertainty}" placeholder="e.g., Performance under low-light or with face masks..." />
             </div>
           </div>
 
           <div style="margin-top:1rem;">
-            <label for="monitoring-${idx}" style="font-weight:700; font-size:0.9rem; display:block; margin-bottom:0.3rem;">F. Proposed Monitoring Plan (Required):</label>
+            <label for="monitoring-${idx}" style="font-weight:700; font-size:0.9rem; display:block; margin-bottom:0.3rem;">F. Proposed Monitoring Plan (Optional):</label>
             <input type="text" class="final-input" id="monitoring-${idx}" value="${finalDecisionsData[idx].monitoring}" placeholder="e.g., Monthly independent audit of false access denial logs..." />
           </div>
         `;
@@ -1995,35 +1995,12 @@
     }
 
     function submitFinalDecisions() {
-      const errBanner = document.getElementById("validation-error-banner");
-      errBanner.style.display = "none";
-      errBanner.innerText = "";
-
-      let missing = [];
-
       USE_CASES.forEach((uc, i) => {
-        const ev = document.getElementById(`evidence-citing-${i}`)?.value.trim() || '';
-        const mc = document.getElementById(`mind-changer-${i}`)?.value.trim() || '';
-        const un = document.getElementById(`uncertainty-${i}`)?.value.trim() || '';
-        const mn = document.getElementById(`monitoring-${i}`)?.value.trim() || '';
-
-        finalDecisionsData[i].evidenceCiting = ev;
-        finalDecisionsData[i].mindChanger = mc;
-        finalDecisionsData[i].uncertainty = un;
-        finalDecisionsData[i].monitoring = mn;
-
-        if (!ev) missing.push(`${uc.name}: Cites evidence`);
-        if (!mc) missing.push(`${uc.name}: What would change your mind`);
-        if (!un) missing.push(`${uc.name}: Remaining uncertainty`);
-        if (!mn) missing.push(`${uc.name}: Monitoring plan`);
+        finalDecisionsData[i].evidenceCiting = document.getElementById(`evidence-citing-${i}`)?.value.trim() || '';
+        finalDecisionsData[i].mindChanger = document.getElementById(`mind-changer-${i}`)?.value.trim() || '';
+        finalDecisionsData[i].uncertainty = document.getElementById(`uncertainty-${i}`)?.value.trim() || '';
+        finalDecisionsData[i].monitoring = document.getElementById(`monitoring-${i}`)?.value.trim() || '';
       });
-
-      if (missing.length > 0) {
-        errBanner.innerText = `⚠️ Please complete all required reasoning fields before proceeding:\n• ${missing.join('\n• ')}`;
-        errBanner.style.display = "block";
-        errBanner.scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
 
       showRationaleScreen();
     }
