@@ -166,7 +166,7 @@
       border-radius: 8px;
       padding: 0.75rem 1.5rem;
       margin-bottom: 2rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
       flex-wrap: wrap;
       gap: 0.5rem;
     }
@@ -226,6 +226,7 @@
         opacity: 0;
         transform: translateY(10px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -333,7 +334,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
     }
 
     .tokens-count {
@@ -355,7 +356,7 @@
       align-items: center;
       justify-content: center;
       font-size: 0.85rem;
-      box-shadow: 0 2px 4px rgba(180,83,9,0.3);
+      box-shadow: 0 2px 4px rgba(180, 83, 9, 0.3);
     }
 
     .token-pill.used {
@@ -447,7 +448,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
       text-align: left;
       width: 100%;
     }
@@ -664,7 +665,8 @@
       font-size: 0.95rem;
     }
 
-    .evidence-table th, .evidence-table td {
+    .evidence-table th,
+    .evidence-table td {
       border: 1px solid var(--border-color);
       padding: 0.6rem 1rem;
       text-align: left;
@@ -736,7 +738,7 @@
       border-radius: 12px;
       padding: 2rem;
       margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
     .evidence-chips-grid {
@@ -887,7 +889,7 @@
       border: 1px solid var(--border-color);
       border-radius: 10px;
       padding: 1.5rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
     }
 
     /* Risk Badges */
@@ -899,9 +901,23 @@
       border-radius: 4px;
     }
 
-    .risk-low { background: rgba(4, 120, 87, 0.08); color: var(--accent-emerald); border: 1px solid rgba(4, 120, 87, 0.25); }
-    .risk-medium { background: rgba(180, 83, 9, 0.08); color: var(--accent-amber); border: 1px solid rgba(180, 83, 9, 0.25); }
-    .risk-high { background: rgba(190, 18, 60, 0.08); color: var(--accent-rose); border: 1px solid rgba(190, 18, 60, 0.25); }
+    .risk-low {
+      background: rgba(4, 120, 87, 0.08);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(4, 120, 87, 0.25);
+    }
+
+    .risk-medium {
+      background: rgba(180, 83, 9, 0.08);
+      color: var(--accent-amber);
+      border: 1px solid rgba(180, 83, 9, 0.25);
+    }
+
+    .risk-high {
+      background: rgba(190, 18, 60, 0.08);
+      color: var(--accent-rose);
+      border: 1px solid rgba(190, 18, 60, 0.25);
+    }
 
     .opt-btn {
       padding: 0.5rem 0.9rem;
@@ -916,9 +932,23 @@
       transition: all 0.2s ease;
     }
 
-    .opt-btn.active-launch { background: var(--accent-emerald); color: white; border-color: var(--accent-emerald); }
-    .opt-btn.active-limited { background: var(--accent-amber); color: white; border-color: var(--accent-amber); }
-    .opt-btn.active-pause { background: var(--accent-rose); color: white; border-color: var(--accent-rose); }
+    .opt-btn.active-launch {
+      background: var(--accent-emerald);
+      color: white;
+      border-color: var(--accent-emerald);
+    }
+
+    .opt-btn.active-limited {
+      background: var(--accent-amber);
+      color: white;
+      border-color: var(--accent-amber);
+    }
+
+    .opt-btn.active-pause {
+      background: var(--accent-rose);
+      color: white;
+      border-color: var(--accent-rose);
+    }
 
     /* Debrief Cards */
     .debrief-grid {
@@ -933,7 +963,7 @@
       border: 1px solid var(--border-color);
       border-radius: 10px;
       padding: 1.75rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
     }
 
     .fairness-badge {
@@ -944,14 +974,43 @@
       text-transform: uppercase;
     }
 
-    .distributive { background: rgba(29, 78, 216, 0.08); color: var(--accent-blue); border: 1px solid rgba(29, 78, 216, 0.25); }
-    .procedural { background: rgba(126, 34, 206, 0.08); color: var(--accent-purple); border: 1px solid rgba(126, 34, 206, 0.25); }
-    .informational { background: rgba(4, 120, 87, 0.08); color: var(--accent-emerald); border: 1px solid rgba(4, 120, 87, 0.25); }
+    .distributive {
+      background: rgba(29, 78, 216, 0.08);
+      color: var(--accent-blue);
+      border: 1px solid rgba(29, 78, 216, 0.25);
+    }
+
+    .procedural {
+      background: rgba(126, 34, 206, 0.08);
+      color: var(--accent-purple);
+      border: 1px solid rgba(126, 34, 206, 0.25);
+    }
+
+    .informational {
+      background: rgba(4, 120, 87, 0.08);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(4, 120, 87, 0.25);
+    }
 
     @media print {
-      header, .btn, .no-print, .progress-nav, .role-select-box { display: none !important; }
-      body { background: white; color: black; }
-      .container { max-width: 100%; padding: 0; }
+
+      header,
+      .btn,
+      .no-print,
+      .progress-nav,
+      .role-select-box {
+        display: none !important;
+      }
+
+      body {
+        background: white;
+        color: black;
+      }
+
+      .container {
+        max-width: 100%;
+        padding: 0;
+      }
     }
   </style>
 </head>
@@ -965,7 +1024,8 @@
     </div>
     <div class="header-actions">
       <button class="btn btn-secondary" onclick="restartGame()" aria-label="Reset Activity">↻ Reset Activity</button>
-      <button class="btn btn-outline" onclick="toggleFacilitatorGuide()" aria-label="Open Facilitator Guide">📘 Facilitator Guide</button>
+      <button class="btn btn-outline" onclick="toggleFacilitatorGuide()" aria-label="Open Facilitator Guide">📘
+        Facilitator Guide</button>
     </div>
   </header>
 
@@ -986,20 +1046,23 @@
       <div class="hero">
         <span class="hero-tag">ALGORITHMIC FAIRNESS SIMULATION</span>
         <h1 id="welcome-title">Campus FacePass Governance Simulation</h1>
-        <p>A 25–35 minute interactive governance simulation exploring model evaluation, intersectional fairness, stakeholder perspectives, procedural safeguards, and risk-based deployment.</p>
+        <p>A 25–35 minute interactive governance simulation exploring model evaluation, intersectional fairness,
+          stakeholder perspectives, procedural safeguards, and risk-based deployment.</p>
       </div>
 
       <!-- Stakeholder Role Assignment -->
       <div class="role-select-box">
         <h3 style="font-family:'Lora',serif; margin-bottom:0.3rem;">Select Participant / Team Perspective</h3>
-        <p style="font-size:0.9rem; color:var(--text-muted);">Assigning a specific stakeholder lens provides an explicit priority during investigations and final policy decisions.</p>
+        <p style="font-size:0.9rem; color:var(--text-muted);">Assigning a specific stakeholder lens provides an explicit
+          priority during investigations and final policy decisions.</p>
         <div class="role-grid" id="roles-container">
           <!-- Rendered dynamically -->
         </div>
       </div>
 
       <div style="display:flex; justify-content:center; margin-bottom:3rem;">
-        <button class="btn btn-primary" style="font-size: 1.1rem; padding: 0.8rem 2.5rem;" onclick="startGame()">Start Governance Simulation →</button>
+        <button class="btn btn-primary" style="font-size: 1.1rem; padding: 0.8rem 2.5rem;" onclick="startGame()">Start
+          Governance Simulation →</button>
       </div>
     </section>
 
@@ -1009,7 +1072,8 @@
       <div class="token-banner">
         <div>
           <strong style="color:var(--text-main); font-size:1rem;">Investigation Token Budget:</strong>
-          <span style="font-size:0.88rem; color:var(--text-muted); display:block;">Each card costs 1 token. With 6 total cards available, you must leave at least 2 uninvestigated.</span>
+          <span style="font-size:0.88rem; color:var(--text-muted); display:block;">Each card costs 1 token. With 6 total
+            cards available, you must leave at least 2 uninvestigated.</span>
         </div>
         <div class="tokens-count" id="tokens-display">
           <!-- Rendered dynamically -->
@@ -1019,7 +1083,8 @@
       <div class="round-header">
         <span class="round-badge" id="round-number-badge">Round 1</span>
         <h2 class="round-title" id="round-title-text">Investigation Stage</h2>
-        <p class="round-prompt" id="round-prompt-text">The vendor claims 98% overall accuracy. What investigation card will your team spend a token on first?</p>
+        <p class="round-prompt" id="round-prompt-text">The vendor claims 98% overall accuracy. What investigation card
+          will your team spend a token on first?</p>
       </div>
 
       <div class="game-grid">
@@ -1028,7 +1093,8 @@
           <div class="cards-section">
             <div class="section-title">
               <span>🃏 Evidence Cards Deck</span>
-              <span style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);">(Select ONE card to investigate)</span>
+              <span style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);">(Select ONE card to
+                investigate)</span>
             </div>
             <div class="cards-grid" id="cards-container">
               <!-- Rendered dynamically -->
@@ -1036,7 +1102,8 @@
           </div>
 
           <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
-            <button class="btn btn-primary" id="play-card-btn" disabled onclick="confirmPlayCard()">Investigate Selected Card →</button>
+            <button class="btn btn-primary" id="play-card-btn" disabled onclick="confirmPlayCard()">Investigate Selected
+              Card →</button>
           </div>
         </div>
 
@@ -1044,7 +1111,9 @@
         <div class="sidebar-column">
           <div class="sidebar-panel">
             <h3 class="section-title">📜 Evidence Log</h3>
-            <div id="role-badge-sidebar" style="margin-bottom:0.75rem; font-size:0.85rem; background:rgba(67,56,202,0.08); color:var(--accent-indigo); padding:0.5rem; border-radius:6px;"></div>
+            <div id="role-badge-sidebar"
+              style="margin-bottom:0.75rem; font-size:0.85rem; background:rgba(67,56,202,0.08); color:var(--accent-indigo); padding:0.5rem; border-radius:6px;">
+            </div>
             <p style="font-size: 0.85rem; color: var(--text-muted);">Investigated cards are permanently spent.</p>
             <div class="history-list" id="history-container">
               <div style="font-size: 0.85rem; color: var(--text-muted); font-style: italic;">No cards played yet.</div>
@@ -1058,8 +1127,10 @@
     <section id="screen-final" class="screen" aria-labelledby="final-title">
       <div style="text-align: center; margin-bottom: 2rem;">
         <span class="hero-tag">DEPLOYMENT POLICY & SAFEGUARDS</span>
-        <h2 id="final-title" style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Deployment Policy Recommendations</h2>
-        <p style="color: var(--text-muted);">Evaluate each use case step-by-step using unlocked evidence chips and required safeguards.</p>
+        <h2 id="final-title" style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Deployment Policy
+          Recommendations</h2>
+        <p style="color: var(--text-muted);">Evaluate each use case step-by-step using unlocked evidence chips and
+          required safeguards.</p>
       </div>
 
       <div class="validation-error-box" id="validation-error-banner"></div>
@@ -1072,35 +1143,45 @@
       <!-- Shared Questions View (Shown on Step 4) -->
       <div id="shared-questions-container" style="display:none;">
         <div class="use-case-step-card">
-          <h3 style="font-family:'Lora',serif; color:var(--accent-indigo); margin-bottom:1rem;">🏛️ Cross-Deployment Governance & Reflection</h3>
-          
+          <h3 style="font-family:'Lora',serif; color:var(--accent-indigo); margin-bottom:1rem;">🏛️ Cross-Deployment
+            Governance & Reflection</h3>
+
           <div style="margin-bottom:1.5rem;">
-            <label for="shared-uncertainty" style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.4rem;">
+            <label for="shared-uncertainty"
+              style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.4rem;">
               1. What is the most important uncertainty remaining across your recommendations? (Required)
             </label>
-            <textarea class="final-input" id="shared-uncertainty" placeholder="e.g., Performance under low-light environments or unexamined trans/non-binary accuracy rates..."></textarea>
+            <textarea class="final-input" id="shared-uncertainty"
+              placeholder="e.g., Performance under low-light environments or unexamined trans/non-binary accuracy rates..."></textarea>
           </div>
 
           <div style="margin-bottom:1.5rem;">
-            <label for="shared-monitoring" style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.4rem;">
+            <label for="shared-monitoring"
+              style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.4rem;">
               2. How should the university monitor the system if any deployment proceeds? (Required)
             </label>
-            <textarea class="final-input" id="shared-monitoring" placeholder="e.g., Conduct bi-monthly disaggregated audits and establish an independent oversight committee..."></textarea>
+            <textarea class="final-input" id="shared-monitoring"
+              placeholder="e.g., Conduct bi-monthly disaggregated audits and establish an independent oversight committee..."></textarea>
           </div>
 
           <div style="margin-bottom:1.5rem;">
-            <label for="shared-role-reflection" style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.4rem;">
-              3. Did your final recommendation honor or override your stakeholder priority (<span id="role-priority-label-reflect"></span>)? Explain why. (Required)
+            <label for="shared-role-reflection"
+              style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.4rem;">
+              3. Did your final recommendation honor or override your stakeholder priority (<span
+                id="role-priority-label-reflect"></span>)? Explain why. (Required)
             </label>
-            <textarea class="final-input" id="shared-role-reflection" placeholder="Explain how your team balanced your assigned role priority against other operational risks..."></textarea>
+            <textarea class="final-input" id="shared-role-reflection"
+              placeholder="Explain how your team balanced your assigned role priority against other operational risks..."></textarea>
           </div>
         </div>
       </div>
 
       <!-- Step Navigation Buttons -->
       <div style="display: flex; justify-content: space-between; align-items:center; margin-top: 2rem;">
-        <button class="btn btn-secondary" id="use-case-prev-btn" onclick="navUseCaseStep(-1)">← Previous Use Case</button>
-        <span id="use-case-step-indicator" style="font-weight:700; font-size:0.95rem; color:var(--text-muted);">Use Case 1 of 3</span>
+        <button class="btn btn-secondary" id="use-case-prev-btn" onclick="navUseCaseStep(-1)">← Previous Use
+          Case</button>
+        <span id="use-case-step-indicator" style="font-weight:700; font-size:0.95rem; color:var(--text-muted);">Use Case
+          1 of 3</span>
         <button class="btn btn-primary" id="use-case-next-btn" onclick="navUseCaseStep(1)">Next Use Case →</button>
       </div>
     </section>
@@ -1109,8 +1190,10 @@
     <section id="screen-rationale" class="screen" aria-labelledby="rationale-title">
       <div style="text-align: center; margin-bottom: 2rem;">
         <span class="hero-tag">EVIDENCE TRAIL & GOVERNANCE SUMMARY</span>
-        <h2 id="rationale-title" style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Governance Trail & Rationale</h2>
-        <p style="color: var(--text-muted);">Review how your team's choices developed over the course of the simulation.</p>
+        <h2 id="rationale-title" style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Governance
+          Trail & Rationale</h2>
+        <p style="color: var(--text-muted);">Review how your team's choices developed over the course of the simulation.
+        </p>
       </div>
 
       <div style="margin-bottom: 2rem;">
@@ -1124,8 +1207,10 @@
       </div>
 
       <div class="uninvestigated-box">
-        <h4 style="font-family:'Lora',serif; color:#b45309; margin-bottom:0.4rem;">⚠️ Important Evidence Your Team Did NOT Investigate</h4>
-        <p style="font-size:0.9rem; color:#78350f; margin-bottom:0.5rem;">Because each card costs 1 Investigation Token, your budget limited you to 4 cards. You missed investigating:</p>
+        <h4 style="font-family:'Lora',serif; color:#b45309; margin-bottom:0.4rem;">⚠️ Important Evidence Your Team Did
+          NOT Investigate</h4>
+        <p style="font-size:0.9rem; color:#78350f; margin-bottom:0.5rem;">Because each card costs 1 Investigation Token,
+          your budget limited you to 4 cards. You missed investigating:</p>
         <ul id="uninvestigated-cards-list" style="padding-left:1.2rem; font-size:0.9rem; color:#78350f;"></ul>
       </div>
 
@@ -1139,32 +1224,45 @@
     <section id="screen-shareout" class="screen" aria-labelledby="shareout-title">
       <div style="text-align: center; margin-bottom: 2rem;">
         <span class="hero-tag">CLASSROOM DISCUSSIONS</span>
-        <h2 id="shareout-title" style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Class Share-Out</h2>
-        <p style="color: var(--text-muted); max-width: 750px; margin: 0 auto;">Present your team's recommendations and compare findings with other groups in the classroom.</p>
+        <h2 id="shareout-title" style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Class Share-Out
+        </h2>
+        <p style="color: var(--text-muted); max-width: 750px; margin: 0 auto;">Present your team's recommendations and
+          compare findings with other groups in the classroom.</p>
       </div>
 
       <!-- Compact Team Summary -->
-      <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:10px; padding:1.5rem; margin-bottom:2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.04);">
-        <h3 style="font-family:'Lora',serif; color:var(--accent-indigo); margin-bottom:0.5rem;">📊 Your Team's Recommendations Summary</h3>
-        <p style="font-size:0.95rem; margin-bottom:0.5rem;"><strong>Stakeholder Role & Priority:</strong> <span id="shareout-role-text"></span></p>
+      <div
+        style="background:#ffffff; border:1px solid var(--border-color); border-radius:10px; padding:1.5rem; margin-bottom:2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.04);">
+        <h3 style="font-family:'Lora',serif; color:var(--accent-indigo); margin-bottom:0.5rem;">📊 Your Team's
+          Recommendations Summary</h3>
+        <p style="font-size:0.95rem; margin-bottom:0.5rem;"><strong>Stakeholder Role & Priority:</strong> <span
+            id="shareout-role-text"></span></p>
         <div class="shareout-grid" id="shareout-cards-grid">
           <!-- Rendered dynamically -->
         </div>
       </div>
 
-      <div style="background:#ffffff; border:1px solid var(--border-color); border-left:5px solid var(--accent-indigo); border-radius:10px; padding:1.75rem; margin-bottom:2rem;">
-        <h4 style="font-family:'Lora',serif; color:var(--accent-indigo); margin-bottom:0.5rem;">💬 Facilitator Discussion Prompts for the Class:</h4>
+      <div
+        style="background:#ffffff; border:1px solid var(--border-color); border-left:5px solid var(--accent-indigo); border-radius:10px; padding:1.75rem; margin-bottom:2rem;">
+        <h4 style="font-family:'Lora',serif; color:var(--accent-indigo); margin-bottom:0.5rem;">💬 Facilitator
+          Discussion Prompts for the Class:</h4>
         <ul style="padding-left:1.2rem; font-size:0.95rem; color:var(--text-muted); line-height:1.7;">
-          <li><strong>Cross-Group Divergence:</strong> Which teams reached different decisions despite seeing similar evidence?</li>
-          <li><strong>Role Perspective Impact:</strong> How did stakeholder priorities influence which harms teams emphasized?</li>
-          <li><strong>Uninvestigated Evidence:</strong> How did uninvestigated evidence affect your team's confidence in deployment decisions?</li>
-          <li><strong>Safeguard Trade-offs:</strong> Which safeguards changed a team's willingness to deploy in high-risk contexts?</li>
-          <li><strong>Values vs Facts:</strong> Which disagreements reflect different ethical values rather than factual misunderstandings?</li>
+          <li><strong>Cross-Group Divergence:</strong> Which teams reached different decisions despite seeing similar
+            evidence?</li>
+          <li><strong>Role Perspective Impact:</strong> How did stakeholder priorities influence which harms teams
+            emphasized?</li>
+          <li><strong>Uninvestigated Evidence:</strong> How did uninvestigated evidence affect your team's confidence in
+            deployment decisions?</li>
+          <li><strong>Safeguard Trade-offs:</strong> Which safeguards changed a team's willingness to deploy in
+            high-risk contexts?</li>
+          <li><strong>Values vs Facts:</strong> Which disagreements reflect different ethical values rather than factual
+            misunderstandings?</li>
         </ul>
       </div>
 
       <div style="display: flex; justify-content: flex-end;">
-        <button class="btn btn-primary" onclick="showDebriefScreen()">Proceed to Fairness Debrief & Gender Shades Study →</button>
+        <button class="btn btn-primary" onclick="showDebriefScreen()">Proceed to Fairness Debrief & Gender Shades Study
+          →</button>
       </div>
     </section>
 
@@ -1172,8 +1270,11 @@
     <section id="screen-debrief" class="screen" aria-labelledby="debrief-title">
       <div style="text-align: center; margin-bottom: 2rem;">
         <span class="hero-tag">THEORETICAL DEBRIEF</span>
-        <h2 id="debrief-title" style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Fairness Concepts & Research Connection</h2>
-        <p style="color: var(--text-muted); max-width: 750px; margin: 0 auto;">See how your evidence cards, unlocked findings, and event responses map to organizational justice frameworks and real-world algorithmic fairness research.</p>
+        <h2 id="debrief-title" style="font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700;">Fairness
+          Concepts & Research Connection</h2>
+        <p style="color: var(--text-muted); max-width: 750px; margin: 0 auto;">See how your evidence cards, unlocked
+          findings, and event responses map to organizational justice frameworks and real-world algorithmic fairness
+          research.</p>
       </div>
 
       <div class="debrief-grid">
@@ -1182,8 +1283,11 @@
             <span class="fairness-badge distributive">Distributive Fairness</span>
           </div>
           <h3 style="font-family: 'Lora', serif; margin-bottom: 0.5rem;">Error Distribution & Intersectionality</h3>
-          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on whether outcomes, accuracy, false-match rates, and false-non-match rates are evenly distributed across demographic subgroups.</p>
-          <div style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on whether outcomes,
+            accuracy, false-match rates, and false-non-match rates are evenly distributed across demographic subgroups.
+          </p>
+          <div
+            style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
             <strong>Cards mapped:</strong><br>
             • Intersectional Audit (Card 2)<br>
             • Expand Categories (Card 3)<br>
@@ -1196,8 +1300,10 @@
             <span class="fairness-badge procedural">Procedural Fairness</span>
           </div>
           <h3 style="font-family: 'Lora', serif; margin-bottom: 0.5rem;">Transparency, Governance & Appeals</h3>
-          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on whether decisions are made through consistent, transparent, human-reviewable, and challengeable processes.</p>
-          <div style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on whether decisions are
+            made through consistent, transparent, human-reviewable, and challengeable processes.</p>
+          <div
+            style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
             <strong>Cards mapped:</strong><br>
             • Transparency & Appeal (Card 6)<br>
             • Risk-Based Use Limit (Card 5)
@@ -1209,8 +1315,10 @@
             <span class="fairness-badge informational">Informational & Interpersonal</span>
           </div>
           <h3 style="font-family: 'Lora', serif; margin-bottom: 0.5rem;">Stakeholder Consent & Dignity</h3>
-          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on how individuals are treated with respect, informed of biometric surveillance, and granted agency over identity data.</p>
-          <div style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Focuses on how individuals are
+            treated with respect, informed of biometric surveillance, and granted agency over identity data.</p>
+          <div
+            style="background: #fbf9f5; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 6px; font-size: 0.9rem;">
             <strong>Cards mapped:</strong><br>
             • Stakeholder Feedback (Card 4)
           </div>
@@ -1218,18 +1326,29 @@
       </div>
 
       <!-- Gender Shades Study Connection -->
-      <div style="margin-top: 2.5rem; background: #ffffff; border: 1px solid var(--border-color); border-left: 5px solid var(--accent-indigo); border-radius: 10px; padding: 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.04);">
-        <h3 style="font-family: 'Lora', serif; color: var(--accent-indigo); margin-bottom: 1rem;">📖 Case Study Connection: The Gender Shades Study</h3>
+      <div
+        style="margin-top: 2.5rem; background: #ffffff; border: 1px solid var(--border-color); border-left: 5px solid var(--accent-indigo); border-radius: 10px; padding: 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.04);">
+        <h3 style="font-family: 'Lora', serif; color: var(--accent-indigo); margin-bottom: 1rem;">📖 Case Study
+          Connection: The Gender Shades Study</h3>
         <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem;">
-          The landmark <strong>Gender Shades</strong> study (Joy Buolamwini & Timnit Gebru, 2018) evaluated commercial facial classification systems from major tech vendors. The study demonstrated that while overall vendor error rates were low (under 1–5% overall error rate), disaggregating performance revealed stark intersectional disparities: error rates for lighter-skinned males were under 1%, whereas error rates for darker-skinned females reached up to <strong>34.7%</strong>.
+          The landmark <strong>Gender Shades</strong> study (Joy Buolamwini & Timnit Gebru, 2018) evaluated commercial
+          facial classification systems from major tech vendors. The study demonstrated that while overall vendor error
+          rates were low (under 1–5% overall error rate), disaggregating performance revealed stark intersectional
+          disparities: error rates for lighter-skinned males were under 1%, whereas error rates for darker-skinned
+          females reached up to <strong>34.7%</strong>.
         </p>
         <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem;">
-          <em>Note on Fictional Scenario:</em> <strong>Campus FacePass and all numerical figures in this activity are fictional scenario data created for classroom discussion.</strong> The simulation is inspired by real-world algorithmic fairness research showing how high aggregate accuracy hides subgroup harms.
+          <em>Note on Fictional Scenario:</em> <strong>Campus FacePass and all numerical figures in this activity are
+            fictional scenario data created for classroom discussion.</strong> The simulation is inspired by real-world
+          algorithmic fairness research showing how high aggregate accuracy hides subgroup harms.
         </p>
-        <div style="font-size:0.9rem; background:#fbf9f5; border:1px solid var(--border-color); padding:0.85rem; border-radius:6px; color:var(--text-muted);">
+        <div
+          style="font-size:0.9rem; background:#fbf9f5; border:1px solid var(--border-color); padding:0.85rem; border-radius:6px; color:var(--text-muted);">
           <strong>Research Citation & Link:</strong><br>
-          Buolamwini, J., & Gebru, T. (2018). <em>Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification.</em> Proceedings of Machine Learning Research, 81, 77-91.<br>
-          <a href="https://proceedings.mlr.press/v81/buolamwini18a.html" target="_blank" rel="noopener noreferrer" style="color:var(--accent-blue); text-decoration:underline;">View original Gender Shades paper (PMLR)</a>
+          Buolamwini, J., & Gebru, T. (2018). <em>Gender Shades: Intersectional Accuracy Disparities in Commercial
+            Gender Classification.</em> Proceedings of Machine Learning Research, 81, 77-91.<br>
+          <a href="https://proceedings.mlr.press/v81/buolamwini18a.html" target="_blank" rel="noopener noreferrer"
+            style="color:var(--accent-blue); text-decoration:underline;">View original Gender Shades paper (PMLR)</a>
         </div>
       </div>
 
@@ -1271,8 +1390,10 @@
           aria-label="Close guide">✕</button>
       </div>
       <div class="evidence-body" style="font-size: 0.95rem; line-height: 1.6;">
-        <div style="margin-bottom:1.5rem; background:#fbf9f5; border:1px solid var(--border-color); padding:1rem; border-radius:8px;">
-          <h4 style="font-family:'Lora',serif; color:var(--accent-indigo); margin-bottom:0.5rem;">⏱️ Activity Timing Guide (25–35 Mins total)</h4>
+        <div
+          style="margin-bottom:1.5rem; background:#fbf9f5; border:1px solid var(--border-color); padding:1rem; border-radius:8px;">
+          <h4 style="font-family:'Lora',serif; color:var(--accent-indigo); margin-bottom:0.5rem;">⏱️ Activity Timing
+            Guide (25–35 Mins total)</h4>
           <ul style="padding-left:1.2rem; font-size:0.88rem; color:var(--text-muted);">
             <li><strong>Introduction & Role Assignment:</strong> 3–5 minutes</li>
             <li><strong>Investigation Rounds & Breaking Events:</strong> 12–15 minutes</li>
@@ -1282,10 +1403,15 @@
         </div>
 
         <h4 style="font-family:'Lora',serif; margin-bottom:0.5rem;">🗣️ Classroom Facilitation Prompts</h4>
-        <ul style="padding-left:1.2rem; display:flex; flex-direction:column; gap:0.75rem; color:var(--text-muted); margin-bottom:1.5rem;">
-          <li><strong>Opening the Activity:</strong> "Today we are evaluating Campus FacePass. The vendor claims 98% overall accuracy. As decision-makers, your job is to investigate incomplete evidence using your 4 tokens, define safeguards, and defend your governance decisions."</li>
-          <li><strong>Handling Token Trade-offs:</strong> "Remind teams that spending a token on one area means leaving another uninvestigated. Highlight the uninvestigated evidence at the end."</li>
-          <li><strong>Class Share-Out Prompts:</strong> "Compare how different stakeholder priorities and token choices led to different policy recommendations across groups."</li>
+        <ul
+          style="padding-left:1.2rem; display:flex; flex-direction:column; gap:0.75rem; color:var(--text-muted); margin-bottom:1.5rem;">
+          <li><strong>Opening the Activity:</strong> "Today we are evaluating Campus FacePass. The vendor claims 98%
+            overall accuracy. As decision-makers, your job is to investigate incomplete evidence using your 4 tokens,
+            define safeguards, and defend your governance decisions."</li>
+          <li><strong>Handling Token Trade-offs:</strong> "Remind teams that spending a token on one area means leaving
+            another uninvestigated. Highlight the uninvestigated evidence at the end."</li>
+          <li><strong>Class Share-Out Prompts:</strong> "Compare how different stakeholder priorities and token choices
+            led to different policy recommendations across groups."</li>
         </ul>
 
         <div style="display: flex; justify-content: space-between; align-items:center; margin-top: 1.5rem;">
@@ -1299,41 +1425,41 @@
   <script>
     // GAME STATE & DATA
     const ROLES_DATA = [
-      { 
-        id: "r1", 
-        title: "🎓 Student Representative", 
+      {
+        id: "r1",
+        title: "🎓 Student Representative",
         priority: "Informed consent and protection from wrongful access denial",
-        desc: "Focuses on student autonomy, clear consent, preventing false non-match access lockouts, and avoiding mandatory biometric enrollment." 
+        desc: "Focuses on student autonomy, clear consent, preventing false non-match access lockouts, and avoiding mandatory biometric enrollment."
       },
-      { 
-        id: "r2", 
-        title: "♿ Disability-Access Advocate", 
+      {
+        id: "r2",
+        title: "♿ Disability-Access Advocate",
         priority: "Equitable and reliable access across conditions and disabilities",
-        desc: "Focuses on accessibility, facial presentation variations, lighting/hardware disparities, and ensuring non-discriminatory access." 
+        desc: "Focuses on accessibility, facial presentation variations, lighting/hardware disparities, and ensuring non-discriminatory access."
       },
-      { 
-        id: "r3", 
-        title: "⚖️ Privacy / Civil Liberties Advocate", 
+      {
+        id: "r3",
+        title: "⚖️ Privacy / Civil Liberties Advocate",
         priority: "Purpose limitation, data minimization, and protection from surveillance expansion",
-        desc: "Focuses on preventing surveillance scope creep, biometric data retention risks, and establishing strong procedural appeal rights." 
+        desc: "Focuses on preventing surveillance scope creep, biometric data retention risks, and establishing strong procedural appeal rights."
       },
-      { 
-        id: "r4", 
-        title: "🛡️ Campus Security Representative", 
+      {
+        id: "r4",
+        title: "🛡️ Campus Security Representative",
         priority: "Emergency responsiveness and facility protection",
-        desc: "Focuses on facility security, fast identity verification during lockdowns, and high-risk threat deterrence." 
+        desc: "Focuses on facility security, fast identity verification during lockdowns, and high-risk threat deterrence."
       },
-      { 
-        id: "r5", 
-        title: "🔬 Faculty / Lab Representative", 
+      {
+        id: "r5",
+        title: "🔬 Faculty / Lab Representative",
         priority: "Reliable access and continuity of research",
-        desc: "Focuses on uninterrupted laboratory entry, protecting sensitive research data, and preventing false denial disruptions." 
+        desc: "Focuses on uninterrupted laboratory entry, protecting sensitive research data, and preventing false denial disruptions."
       },
-      { 
-        id: "r6", 
-        title: "🏛️ University Administrator", 
+      {
+        id: "r6",
+        title: "🏛️ University Administrator",
         priority: "Operational feasibility, institutional risk, and public trust",
-        desc: "Balances operational budget, legal liability, vendor contracts, and maintaining broad community confidence." 
+        desc: "Balances operational budget, legal liability, vendor contracts, and maintaining broad community confidence."
       }
     ];
 
@@ -1605,7 +1731,7 @@
     let selectedCardId = null;
     let playedCards = [];
     let eventsEncountered = [];
-    
+
     // Step navigation for Final Decisions (0 = Library, 1 = Dorm, 2 = Police, 3 = Shared Questions)
     let currentUseCaseStep = 0;
 
@@ -1927,14 +2053,14 @@
               </label>
               <div class="evidence-chips-grid">
                 ${playedCards.map(p => {
-                  const isChipSelected = data.selectedEvidenceIds.includes(p.card.id);
-                  return `
+          const isChipSelected = data.selectedEvidenceIds.includes(p.card.id);
+          return `
                     <div class="evidence-chip ${isChipSelected ? 'selected' : ''}" onclick="toggleEvidenceChip(${currentUseCaseStep}, ${p.card.id})" tabindex="0" role="checkbox" aria-checked="${isChipSelected}">
                       <div class="evidence-chip-title">${isChipSelected ? '✓ ' : ''}Card 0${p.card.id}: ${p.card.title}</div>
                       <div class="evidence-chip-desc">${p.card.desc}</div>
                     </div>
                   `;
-                }).join('')}
+        }).join('')}
               </div>
               <div style="margin-top:0.75rem;">
                 <label for="evidence-support-text-${currentUseCaseStep}" style="font-size:0.85rem; color:var(--text-muted); display:block; margin-bottom:0.3rem;">How does this evidence support your decision? (Optional):</label>
@@ -2001,7 +2127,7 @@
         if (!data.decision) missing.push("Select a deployment choice (Launch, Limited Launch, or Pause)");
         if (data.decision !== "Pause" && data.safeguards.length === 0) missing.push("Select at least one required safeguard (unless Pause is selected)");
         if (data.selectedEvidenceIds.length < 2) missing.push("Select at least 2 pieces of unlocked evidence");
-        
+
         const mc = document.getElementById(`mind-changer-${currentUseCaseStep}`)?.value.trim();
         if (mc !== undefined) data.mindChanger = mc;
         if (!data.mindChanger) missing.push("Complete 'What would change your mind?'");
