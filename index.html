@@ -2014,14 +2014,14 @@
             </label>
             <div class="evidence-chips-grid">
               ${playedCards.map(p => {
-                const isChipSelected = data.selectedEvidenceIds.includes(p.card.id);
-                return `
+        const isChipSelected = data.selectedEvidenceIds.includes(p.card.id);
+        return `
                   <div class="evidence-chip ${isChipSelected ? 'selected' : ''}" onclick="toggleEvidenceChip(${currentUseCaseStep}, ${p.card.id})" tabindex="0" role="checkbox" aria-checked="${isChipSelected}">
                     <div class="evidence-chip-title">${isChipSelected ? '✓ ' : ''}Card 0${p.card.id}: ${p.card.title}</div>
                     <div class="evidence-chip-desc">${p.card.desc}</div>
                   </div>
                 `;
-              }).join('')}
+      }).join('')}
             </div>
             <div style="margin-top:0.75rem;">
               <label for="evidence-support-text-${currentUseCaseStep}" style="font-size:0.85rem; color:var(--text-muted); display:block; margin-bottom:0.3rem;">How does this evidence support your decision? (Optional):</label>
