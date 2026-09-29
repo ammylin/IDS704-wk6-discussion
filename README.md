@@ -1,19 +1,16 @@
-# Campus FacePass: Decision Cards Activity 🃏🏫
+# Campus FacePass: Interactive Governance Simulation 🏫⚖️
 
-An interactive 25–35 minute board-game style discussion activity designed for university data science, AI ethics, and organizational governance courses (IDS704).
+An interactive 25–35 minute governance simulation designed for university data science, AI ethics, and organizational governance courses (IDS704).
 
 🌐 **Live Activity Web App**: [https://ammylin.github.io/IDS704-wk6-discussion/](https://ammylin.github.io/IDS704-wk6-discussion/)
 
 ---
 
-## 🎯 Activity Overview & Purpose
+## 🎯 Simulation Overview & Purpose
 
-This activity is designed to spark deep, evidence-based discussions on **algorithmic fairness** and **biometric governance** without giving students a pre-packaged answer upfront. 
+This activity is an **interactive governance simulation** exploring model evaluation, intersectional fairness, stakeholder perspectives, procedural safeguards, and risk-based deployment without providing a pre-packaged answer.
 
-Students are placed in a fictional university scenario where they must evaluate **Campus FacePass**—a proposed facial recognition system for campus access. Working in small teams, students navigate 4 staged investigation rounds using limited single-use decision cards. Each card uncovers disaggregated technical metrics, missing populations, stakeholder perspectives, contextual risk maps, or procedural recourse data.
-
-### Fictional Scenario
-The university is preparing to launch *Campus FacePass* to allow cardless access for students, faculty, and staff. The vendor claims an **overall accuracy of 98.0%**.
+Participants evaluate **Campus FacePass**—a proposed facial recognition system allowing cardless campus access. The vendor claims an **overall accuracy of 98.0%**.
 
 Teams evaluate deployment across three distinct use cases:
 1. **Library & Gym Access** *(Lower-Risk Convenience Use)*
@@ -22,27 +19,32 @@ Teams evaluate deployment across three distinct use cases:
 
 ---
 
-## 🕹️ Key Game Features & Mechanics
+## 🕹️ Key Features & Mechanics
 
-* **Single-Use Investigation Deck**: 6 cards covering aggregate metrics, disaggregated intersectional audits, category expansion, stakeholder voices, contextual risk mapping, and procedural transparency. Each card can only be played once.
-* **Evidence Unlocking & Disaggregation**: Playing a card reveals concrete scenario data (e.g., disaggregated False Match Rates from 0.8% for lighter males up to 6.2% for darker females, and False Non-Match Rates up to 8.5%).
-* **Missing Evidence Notices**: Highlights important information teams missed by choosing one investigation path over another.
-* **Stakeholder Lenses**: Teams can optionally adopt specific participant perspectives (*Student Rep, Disability-Access Advocate, Privacy Advocate, Campus Security, Faculty/Lab Rep, Administrator*).
-* **Breaking Events**: Unexpected mid-game scenarios (such as a *False Match Access Denial Incident* or *Off-Label Police Surveillance Requests*).
-* **Conditional Deployment & Safeguards**: Teams assign deployment stances (*Launch*, *Limited Launch*, *Pause*) alongside customizable safeguards (*Human review, Appeal process, Independent audit, Monitoring*).
-* **Non-Blocking Reflection**: All text fields (*Cited Evidence, What Would Change Your Mind, Uncertainty*) are optional and non-blocking, ensuring smooth classroom pacing.
-* **Classroom Team Comparison & Theoretical Debrief**: Provides cross-group comparison prompts and connects team outcomes to **Distributive**, **Procedural**, and **Informational Fairness**, as well as the landmark **Gender Shades** study (*Buolamwini & Gebru, 2018*).
+* **Stakeholder Lenses with Explicit Priorities**:
+  * 🎓 *Student Representative*: Informed consent and protection from wrongful access denial
+  * ♿ *Disability-Access Advocate*: Equitable and reliable access across conditions and disabilities
+  * ⚖️ *Privacy / Civil Liberties Advocate*: Purpose limitation, data minimization, and protection from surveillance expansion
+  * 🛡️ *Campus Security Representative*: Emergency responsiveness and facility protection
+  * 🔬 *Faculty / Lab Representative*: Reliable access and continuity of research
+  * 🏛️ *University Administrator*: Operational feasibility, institutional risk, and public trust
+* **Investigation Token Budget**: Each team receives **4 Investigation Tokens** to investigate a deck of 6 evidence cards. Teams must choose which areas to investigate and which 2 cards to leave uninvestigated.
+* **Evidence Unlocking & Disaggregation**: Uncovers concrete disaggregated metrics (e.g., False Match Rates from 0.8% up to 6.2% and False Non-Match Rates up to 8.5%).
+* **Breaking Events**: Unexpected scenarios (*False Match Access Denial Incident* or *Off-Label Police Search Requests*) test policy choices without consuming tokens.
+* **Step-by-Step Deployment Policy & Evidence Chips**: Single use case views with selectable evidence chips. Progression requires selecting a deployment stance (*Launch*, *Limited Launch*, *Pause*), safeguards, at least 2 evidence chips, and answering *"What would change your mind?"*.
+* **Clean Rationale & Class Share-Out**: Omits blank fields from summary reports and facilitates cross-team share-outs to discuss how different stakeholder priorities and token choices led to defensible governance decisions.
+* **Theoretical Debrief**: Connects outcomes to **Distributive**, **Procedural**, and **Informational Fairness**, as well as the landmark **Gender Shades** study (*Buolamwini & Gebru, 2018*).
 
 ---
 
-## 📘 Facilitator Guide & Pacing
+## 📘 Facilitator Guide & Pacing (25–35 Mins Total)
 
 | Stage | Duration | Core Action |
 | :--- | :--- | :--- |
-| **1. Setup & Role Lens** | 3–5 mins | Introduce scenario and assign team stakeholder perspectives. |
-| **2. Investigation Rounds** | 12–15 mins | Teams play cards across 4 rounds and respond to breaking events. |
-| **3. Deployment & Safeguards** | 5–8 mins | Select Launch / Limited Launch / Pause and assign safeguards for all 3 use cases. |
-| **4. Trail Review & Comparison** | 5–7 mins | Compare decisions across teams and debrief Gender Shades concepts. |
+| **1. Role & Briefing** | 3–5 mins | Introduce simulation and assign stakeholder role priorities. |
+| **2. Investigation Stage** | 12–15 mins | Teams spend 4 Investigation Tokens across 6 evidence cards and respond to breaking events. |
+| **3. Deployment Decisions** | 5–8 mins | Step-by-step policy decisions citing evidence chips for all 3 use cases and answering shared governance questions. |
+| **4. Evidence Trail & Share-Out** | 5–7 mins | Review uncovered vs uninvestigated evidence, conduct class share-out, and debrief Gender Shades concepts. |
 
 ---
 
@@ -70,4 +72,4 @@ This classroom exercise is inspired by algorithmic fairness research:
 
 * **Buolamwini, J., & Gebru, T. (2018).** *Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification.* Proceedings of Machine Learning Research, 81, 77–91. [Read Paper (PMLR)](https://proceedings.mlr.press/v81/buolamwini18a.html)
 
-*Disclaimer: Campus FacePass and all numerical metrics in this activity are fictional scenario data created for classroom instruction.*
+*Disclaimer: Campus FacePass and all numerical metrics in this simulation are fictional scenario data created for classroom instruction.*
