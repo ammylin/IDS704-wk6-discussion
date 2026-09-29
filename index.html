@@ -1950,9 +1950,6 @@
       showScreen("screen-final");
       updateProgressBar(3);
 
-      const roleObj = ROLES_DATA.find(r => r.id === selectedRoleId);
-      document.getElementById("role-priority-label-reflect").innerText = roleObj ? roleObj.priority : "Selected Priority";
-
       currentUseCaseStep = 0;
       renderUseCaseStep();
     }
