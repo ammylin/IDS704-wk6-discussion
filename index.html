@@ -1963,94 +1963,78 @@
       errBanner.innerText = "";
 
       const stepContainer = document.getElementById("use-case-step-container");
-      const sharedContainer = document.getElementById("shared-questions-container");
       const indicator = document.getElementById("use-case-step-indicator");
       const prevBtn = document.getElementById("use-case-prev-btn");
       const nextBtn = document.getElementById("use-case-next-btn");
 
-      if (currentUseCaseStep < 3) {
-        stepContainer.style.display = "block";
-        sharedContainer.style.display = "none";
-        indicator.innerText = `Decision ${currentUseCaseStep + 1} of 3`;
+      stepContainer.style.display = "block";
+      indicator.innerText = `Decision ${currentUseCaseStep + 1} of 3`;
 
-        prevBtn.style.visibility = (currentUseCaseStep === 0) ? "hidden" : "visible";
-        nextBtn.innerText = (currentUseCaseStep === 2) ? "Proceed to Shared Governance Questions →" : "Next Use Case →";
+      prevBtn.style.visibility = (currentUseCaseStep === 0) ? "hidden" : "visible";
+      nextBtn.innerText = (currentUseCaseStep === 2) ? "Review Evidence Trail & Summary →" : "Next Use Case →";
 
-        const uc = USE_CASES[currentUseCaseStep];
-        const data = finalDecisionsData[currentUseCaseStep];
+      const uc = USE_CASES[currentUseCaseStep];
+      const data = finalDecisionsData[currentUseCaseStep];
 
-        stepContainer.innerHTML = `
-          <div class="use-case-step-card">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-              <div>
-                <h3 style="font-family:'Lora',serif; font-size:1.4rem; font-weight:700;">${uc.name}</h3>
-                <span class="risk-badge ${uc.defaultRisk}">${uc.riskLabel}</span> — <span style="font-size:0.9rem; color:var(--text-muted);">${uc.desc}</span>
-              </div>
-            </div>
-
-            <div style="margin-bottom:1.5rem;">
-              <label style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.5rem;">A. Deployment Choice (Required):</label>
-              <div class="decision-options">
-                <button type="button" class="opt-btn ${data.decision === 'Launch' ? 'active-launch' : ''}" onclick="setStepDecision(${currentUseCaseStep}, 'Launch')">Launch</button>
-                <button type="button" class="opt-btn ${data.decision === 'Limited Launch' ? 'active-limited' : ''}" onclick="setStepDecision(${currentUseCaseStep}, 'Limited Launch')">Limited Launch</button>
-                <button type="button" class="opt-btn ${data.decision === 'Pause' ? 'active-pause' : ''}" onclick="setStepDecision(${currentUseCaseStep}, 'Pause')">Pause</button>
-              </div>
-            </div>
-
-            <div style="margin-bottom:1.5rem;">
-              <label style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.5rem;">
-                B. Required Safeguards ${data.decision === 'Pause' ? '(Optional for Pause)' : '(Required - Select at least one)'}:
-              </label>
-              <div class="safeguards-grid">
-                ${SAFEGUARD_OPTIONS.map(sg => `
-                  <label class="checkbox-label">
-                    <input type="checkbox" value="${sg}" ${data.safeguards.includes(sg) ? 'checked' : ''} onchange="toggleStepSafeguard(${currentUseCaseStep}, '${sg}')">
-                    <span>${sg}</span>
-                  </label>
-                `).join('')}
-              </div>
-            </div>
-
-            <div style="margin-bottom:1.5rem;">
-              <label style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.3rem;">
-                C. Select At Least 2 Pieces of Unlocked Evidence to Support Decision (Required - ${data.selectedEvidenceIds.length}/2 Selected):
-              </label>
-              <div class="evidence-chips-grid">
-                ${playedCards.map(p => {
-          const isChipSelected = data.selectedEvidenceIds.includes(p.card.id);
-          return `
-                    <div class="evidence-chip ${isChipSelected ? 'selected' : ''}" onclick="toggleEvidenceChip(${currentUseCaseStep}, ${p.card.id})" tabindex="0" role="checkbox" aria-checked="${isChipSelected}">
-                      <div class="evidence-chip-title">${isChipSelected ? '✓ ' : ''}Card 0${p.card.id}: ${p.card.title}</div>
-                      <div class="evidence-chip-desc">${p.card.desc}</div>
-                    </div>
-                  `;
-        }).join('')}
-              </div>
-              <div style="margin-top:0.75rem;">
-                <label for="evidence-support-text-${currentUseCaseStep}" style="font-size:0.85rem; color:var(--text-muted); display:block; margin-bottom:0.3rem;">How does this evidence support your decision? (Optional):</label>
-                <input type="text" class="final-input" id="evidence-support-text-${currentUseCaseStep}" value="${data.evidenceSupportText}" placeholder="Briefly explain how selected chips substantiate your deployment stance..." oninput="finalDecisionsData[${currentUseCaseStep}].evidenceSupportText = this.value" />
-              </div>
-            </div>
-
+      stepContainer.innerHTML = `
+        <div class="use-case-step-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
             <div>
-              <label for="mind-changer-${currentUseCaseStep}" style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.3rem;">D. What Would Change Your Mind? (Required):</label>
-              <input type="text" class="final-input" id="mind-changer-${currentUseCaseStep}" value="${data.mindChanger}" placeholder="e.g., Subgroup false match error gap dropping below 1.5%..." oninput="finalDecisionsData[${currentUseCaseStep}].mindChanger = this.value" />
+              <h3 style="font-family:'Lora',serif; font-size:1.4rem; font-weight:700;">${uc.name}</h3>
+              <span class="risk-badge ${uc.defaultRisk}">${uc.riskLabel}</span> — <span style="font-size:0.9rem; color:var(--text-muted);">${uc.desc}</span>
             </div>
           </div>
-        `;
-      } else {
-        // Shared Governance Questions Step
-        stepContainer.style.display = "none";
-        sharedContainer.style.display = "block";
-        indicator.innerText = `Cross-Deployment Shared Questions`;
 
-        prevBtn.style.visibility = "visible";
-        nextBtn.innerText = "Review Evidence Trail & Governance Rationale →";
+          <div style="margin-bottom:1.5rem;">
+            <label style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.5rem;">A. Deployment Choice (Required):</label>
+            <div class="decision-options">
+              <button type="button" class="opt-btn ${data.decision === 'Launch' ? 'active-launch' : ''}" onclick="setStepDecision(${currentUseCaseStep}, 'Launch')">Launch</button>
+              <button type="button" class="opt-btn ${data.decision === 'Limited Launch' ? 'active-limited' : ''}" onclick="setStepDecision(${currentUseCaseStep}, 'Limited Launch')">Limited Launch</button>
+              <button type="button" class="opt-btn ${data.decision === 'Pause' ? 'active-pause' : ''}" onclick="setStepDecision(${currentUseCaseStep}, 'Pause')">Pause</button>
+            </div>
+          </div>
 
-        document.getElementById("shared-uncertainty").value = sharedResponses.uncertainty;
-        document.getElementById("shared-monitoring").value = sharedResponses.monitoring;
-        document.getElementById("shared-role-reflection").value = sharedResponses.roleReflection;
-      }
+          <div style="margin-bottom:1.5rem;">
+            <label style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.5rem;">
+              B. Required Safeguards ${data.decision === 'Pause' ? '(Optional for Pause)' : '(Required - Select at least one)'}:
+            </label>
+            <div class="safeguards-grid">
+              ${SAFEGUARD_OPTIONS.map(sg => `
+                <label class="checkbox-label">
+                  <input type="checkbox" value="${sg}" ${data.safeguards.includes(sg) ? 'checked' : ''} onchange="toggleStepSafeguard(${currentUseCaseStep}, '${sg}')">
+                  <span>${sg}</span>
+                </label>
+              `).join('')}
+            </div>
+          </div>
+
+          <div style="margin-bottom:1.5rem;">
+            <label style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.3rem;">
+              C. Select At Least 2 Pieces of Unlocked Evidence to Support Decision (Required - ${data.selectedEvidenceIds.length}/2 Selected):
+            </label>
+            <div class="evidence-chips-grid">
+              ${playedCards.map(p => {
+                const isChipSelected = data.selectedEvidenceIds.includes(p.card.id);
+                return `
+                  <div class="evidence-chip ${isChipSelected ? 'selected' : ''}" onclick="toggleEvidenceChip(${currentUseCaseStep}, ${p.card.id})" tabindex="0" role="checkbox" aria-checked="${isChipSelected}">
+                    <div class="evidence-chip-title">${isChipSelected ? '✓ ' : ''}Card 0${p.card.id}: ${p.card.title}</div>
+                    <div class="evidence-chip-desc">${p.card.desc}</div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+            <div style="margin-top:0.75rem;">
+              <label for="evidence-support-text-${currentUseCaseStep}" style="font-size:0.85rem; color:var(--text-muted); display:block; margin-bottom:0.3rem;">How does this evidence support your decision? (Optional):</label>
+              <input type="text" class="final-input" id="evidence-support-text-${currentUseCaseStep}" value="${data.evidenceSupportText}" placeholder="Briefly explain how selected chips substantiate your deployment stance..." oninput="finalDecisionsData[${currentUseCaseStep}].evidenceSupportText = this.value" />
+            </div>
+          </div>
+
+          <div>
+            <label for="mind-changer-${currentUseCaseStep}" style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.3rem;">D. What Would Change Your Mind? (Required):</label>
+            <input type="text" class="final-input" id="mind-changer-${currentUseCaseStep}" value="${data.mindChanger}" placeholder="e.g., Subgroup false match error gap dropping below 1.5%..." oninput="finalDecisionsData[${currentUseCaseStep}].mindChanger = this.value" />
+          </div>
+        </div>
+      `;
     }
 
     function setStepDecision(stepIdx, decision) {
