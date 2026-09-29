@@ -1140,48 +1140,10 @@
         <!-- Rendered dynamically for single use case -->
       </div>
 
-      <!-- Shared Questions View (Shown on Step 4) -->
-      <div id="shared-questions-container" style="display:none;">
-        <div class="use-case-step-card">
-          <h3 style="font-family:'Lora',serif; color:var(--accent-indigo); margin-bottom:1rem;">🏛️ Cross-Deployment
-            Governance & Reflection</h3>
-
-          <div style="margin-bottom:1.5rem;">
-            <label for="shared-uncertainty"
-              style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.4rem;">
-              1. What is the most important uncertainty remaining across your recommendations? (Required)
-            </label>
-            <textarea class="final-input" id="shared-uncertainty"
-              placeholder="e.g., Performance under low-light environments or unexamined trans/non-binary accuracy rates..."></textarea>
-          </div>
-
-          <div style="margin-bottom:1.5rem;">
-            <label for="shared-monitoring"
-              style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.4rem;">
-              2. How should the university monitor the system if any deployment proceeds? (Required)
-            </label>
-            <textarea class="final-input" id="shared-monitoring"
-              placeholder="e.g., Conduct bi-monthly disaggregated audits and establish an independent oversight committee..."></textarea>
-          </div>
-
-          <div style="margin-bottom:1.5rem;">
-            <label for="shared-role-reflection"
-              style="font-weight:700; font-size:0.95rem; display:block; margin-bottom:0.4rem;">
-              3. Did your final recommendation honor or override your stakeholder priority (<span
-                id="role-priority-label-reflect"></span>)? Explain why. (Required)
-            </label>
-            <textarea class="final-input" id="shared-role-reflection"
-              placeholder="Explain how your team balanced your assigned role priority against other operational risks..."></textarea>
-          </div>
-        </div>
-      </div>
-
       <!-- Step Navigation Buttons -->
       <div style="display: flex; justify-content: space-between; align-items:center; margin-top: 2rem;">
-        <button class="btn btn-secondary" id="use-case-prev-btn" onclick="navUseCaseStep(-1)">← Previous Use
-          Case</button>
-        <span id="use-case-step-indicator" style="font-weight:700; font-size:0.95rem; color:var(--text-muted);">Use Case
-          1 of 3</span>
+        <button class="btn btn-secondary" id="use-case-prev-btn" onclick="navUseCaseStep(-1)">← Previous Use Case</button>
+        <span id="use-case-step-indicator" style="font-weight:700; font-size:0.95rem; color:var(--text-muted);">Decision 1 of 3</span>
         <button class="btn btn-primary" id="use-case-next-btn" onclick="navUseCaseStep(1)">Next Use Case →</button>
       </div>
     </section>
@@ -2118,7 +2080,7 @@
       errBanner.style.display = "none";
       errBanner.innerText = "";
 
-      if (delta > 0 && currentUseCaseStep < 3) {
+      if (delta > 0) {
         // Validate current use case step
         const data = finalDecisionsData[currentUseCaseStep];
         const ucName = USE_CASES[currentUseCaseStep].name;
@@ -2138,30 +2100,11 @@
           errBanner.scrollIntoView({ behavior: 'smooth' });
           return;
         }
-      } else if (delta > 0 && currentUseCaseStep === 3) {
-        // Validate Shared Questions
-        const unc = document.getElementById("shared-uncertainty")?.value.trim() || '';
-        const mon = document.getElementById("shared-monitoring")?.value.trim() || '';
-        const ref = document.getElementById("shared-role-reflection")?.value.trim() || '';
 
-        sharedResponses.uncertainty = unc;
-        sharedResponses.monitoring = mon;
-        sharedResponses.roleReflection = ref;
-
-        let missing = [];
-        if (!unc) missing.push("Remaining uncertainty across recommendations");
-        if (!mon) missing.push("System monitoring plan");
-        if (!ref) missing.push("Stakeholder priority reflection (honored or overridden)");
-
-        if (missing.length > 0) {
-          errBanner.innerText = `⚠️ Please complete all shared governance questions before proceeding:\n• ${missing.join('\n• ')}`;
-          errBanner.style.display = "block";
-          errBanner.scrollIntoView({ behavior: 'smooth' });
+        if (currentUseCaseStep === 2) {
+          showRationaleScreen();
           return;
         }
-
-        showRationaleScreen();
-        return;
       }
 
       currentUseCaseStep += delta;
@@ -2191,14 +2134,7 @@
             ${d.mindChanger ? `<p style="font-size:0.9rem; color:var(--text-muted);"><strong>What Would Change Our Mind:</strong> <em>"${d.mindChanger}"</em></p>` : ''}
           </div>
         `;
-      }).join('') + `
-        <div style="background:#fbf9f5; border:1px solid var(--border-color); border-radius:8px; padding:1.25rem; margin-top:1.5rem;">
-          <h4 style="font-family:'Lora',serif; color:var(--accent-indigo); margin-bottom:0.5rem;">🌐 Cross-Deployment Governance & Role Reflection</h4>
-          ${sharedResponses.uncertainty ? `<p style="font-size:0.9rem; margin-bottom:0.4rem;"><strong>Most Important Remaining Uncertainty:</strong> <em>"${sharedResponses.uncertainty}"</em></p>` : ''}
-          ${sharedResponses.monitoring ? `<p style="font-size:0.9rem; margin-bottom:0.4rem;"><strong>University Monitoring Plan:</strong> <em>"${sharedResponses.monitoring}"</em></p>` : ''}
-          ${sharedResponses.roleReflection ? `<p style="font-size:0.9rem;"><strong>Stakeholder Priority Reflection:</strong> <em>"${sharedResponses.roleReflection}"</em></p>` : ''}
-        </div>
-      `;
+      }).join('');
 
       const trailList = document.getElementById("evidence-trail-list");
       trailList.innerHTML = playedCards.map(p => `
